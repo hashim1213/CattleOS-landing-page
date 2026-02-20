@@ -275,15 +275,15 @@ export function LandingPage() {
       </header>
 
       {/* Hero Section with Background */}
-      <section className="relative overflow-hidden -mt-[120px] pt-[120px]">
+      <section className="relative overflow-hidden -mt-[120px] pt-[120px] min-h-screen flex items-center">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 top-[-120px] z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-background z-10" />
           <Image
             src="/cow_moo.webp"
             alt="Cattle farm"
             fill
-            className="object-cover"
+            className="object-cover scale-105"
             priority
             onError={(e) => {
               // Fallback to gradient if image not found
@@ -294,35 +294,72 @@ export function LandingPage() {
         </div>
 
         {/* Content */}
-        <div className="relative z-20 container mx-auto px-4 py-28 md:py-36 lg:py-44">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              Your Spreadsheets Are So Messy,
+        <div className="relative z-20 container mx-auto px-4 py-20 md:py-32">
+          <div className="max-w-5xl mx-auto text-center">
+            {/* Launch Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-8">
+              <Rocket className="h-4 w-4 text-white" />
+              <span className="text-sm font-medium text-white">Launching Q2 2026 • Early Access Available</span>
+            </div>
+
+            {/* Main Headline */}
+            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-6 leading-[1.1] tracking-tight">
+              Your Spreadsheets Are
               <br />
-              <span className="text-white/90">Even The Cattle Are Confused.</span>
+              So Messy,
+              <br />
+              <span className="bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+                Even The Cattle Are Confused.
+              </span>
             </h1>
-            <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Professional cattle management with real-time inventory tracking, cost management, and performance analytics
-              for cow-calf operations and feedlots across North America.
+
+            {/* Subtitle */}
+            <p className="text-xl md:text-2xl text-white/80 mb-10 max-w-3xl mx-auto leading-relaxed font-light">
+              Professional cattle management with real-time inventory tracking, cost management, and performance analytics.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="text-base px-8 py-6 bg-[#77461B] hover:bg-[#5c3615] text-white"
-                onClick={() => document.getElementById('loi-form')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                Get Started <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+              <a href="https://app.cattleos.com/signup">
+                <Button
+                  size="lg"
+                  className="text-lg px-10 py-7 bg-[#77461B] hover:bg-[#5c3615] text-white rounded-full shadow-2xl hover:shadow-[#77461B]/50 transition-all duration-300 hover:scale-105"
+                >
+                  Get Started <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </a>
               <Button
                 size="lg"
                 variant="outline"
-                className="text-base px-8 py-6 bg-white text-gray-900 border-white hover:bg-gray-100"
+                className="text-lg px-10 py-7 bg-white/10 backdrop-blur-md text-white border-white/30 hover:bg-white/20 rounded-full transition-all duration-300"
                 onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Learn More
               </Button>
             </div>
-            <p className="text-sm text-white/70 mt-6">Launching Q2 2026 • Early Access Available</p>
+
+            {/* Trust Indicators */}
+            <div className="flex flex-wrap items-center justify-center gap-6 text-white/60 text-sm">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4 text-green-400" />
+                <span>No Credit Card Required</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4 text-green-400" />
+                <span>Free Trial Available</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4 text-green-400" />
+                <span>Cancel Anytime</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce">
+          <div className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-2">
+            <div className="w-1 h-3 bg-white/60 rounded-full"></div>
           </div>
         </div>
       </section>
