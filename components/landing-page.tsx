@@ -294,7 +294,7 @@ export function LandingPage() {
         </div>
 
         {/* Content */}
-        <div className="relative z-20 container mx-auto px-4 md:px-8 h-full flex items-end pb-12 md:pb-20">
+        <div className="relative z-20 container mx-auto px-4 md:px-8 h-full flex items-end pb-8 md:pb-12">
           <div className="max-w-2xl">
             {/* Main Headline */}
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight tracking-tight">
