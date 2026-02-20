@@ -40,6 +40,204 @@ import {
 import Link from "next/link"
 import Image from "next/image"
 
+// Interactive Workflow Demo Component
+function InteractiveWorkflowDemo() {
+  const [activeStep, setActiveStep] = useState(0)
+  const [isAnimating, setIsAnimating] = useState(false)
+  const [completedSteps, setCompletedSteps] = useState<number[]>([])
+
+  const workflowSteps = [
+    {
+      id: 1,
+      title: "Add a Cow",
+      description: "Simply speak or type the tag number",
+      action: "Adding Cow #482...",
+      image: "/screen_add.png",
+      color: "from-blue-500 to-blue-600"
+    },
+    {
+      id: 2,
+      title: "Record Weight",
+      description: "Quick weight entry with voice or manual input",
+      action: "Weight: 850 lbs recorded",
+      image: "/screen_weight.png",
+      color: "from-purple-500 to-purple-600"
+    },
+    {
+      id: 3,
+      title: "Add Medication",
+      description: "Track treatments and withdrawal periods",
+      action: "5ml Penicillin added",
+      image: "/screen3.png",
+      color: "from-green-500 to-green-600"
+    },
+    {
+      id: 4,
+      title: "Track Costs",
+      description: "Real-time cost per head calculation",
+      action: "Cost: $1,245/head",
+      image: "/screen4.png",
+      color: "from-orange-500 to-orange-600"
+    }
+  ]
+
+  const handleStepClick = (index: number) => {
+    // Mark previous steps as completed
+    if (index > activeStep) {
+      setCompletedSteps((prev) => [...prev, activeStep])
+    } else if (index < activeStep) {
+      setCompletedSteps((prev) => prev.filter(step => step < index))
+    }
+    setActiveStep(index)
+    setIsAnimating(true)
+    setTimeout(() => setIsAnimating(false), 500)
+  }
+
+  return (
+    <div className="max-w-5xl mx-auto">
+      {/* Steps Timeline */}
+      <div className="relative mb-12">
+        {/* Progress Line */}
+        <div className="absolute top-12 left-0 right-0 h-1 bg-gray-200 dark:bg-gray-800 rounded-full">
+          <div
+            className="h-full bg-gradient-to-r from-[#77461B] to-[#5c3615] rounded-full transition-all duration-1000 ease-out"
+            style={{ width: `${(activeStep / (workflowSteps.length - 1)) * 100}%` }}
+          />
+        </div>
+
+        {/* Step Nodes */}
+        <div className="grid grid-cols-4 gap-4 relative">
+          {workflowSteps.map((step, index) => (
+            <div key={step.id} className="flex flex-col items-center">
+              {/* Node */}
+              <button
+                onClick={() => handleStepClick(index)}
+                className={`relative z-10 w-24 h-24 rounded-full overflow-hidden flex items-center justify-center transition-all duration-500 cursor-pointer hover:scale-105 ${
+                  index === activeStep
+                    ? 'shadow-lg scale-110 ring-4 ring-primary/30'
+                    : completedSteps.includes(index)
+                    ? 'shadow-md ring-2 ring-primary/20'
+                    : 'border-2 border-gray-300 dark:border-gray-700 hover:border-primary/50'
+                }`}
+              >
+                {completedSteps.includes(index) ? (
+                  <div className="w-full h-full bg-[#77461B] flex items-center justify-center">
+                    <CheckCircle2 className="h-12 w-12 text-white" />
+                  </div>
+                ) : (
+                  <Image
+                    src={step.image}
+                    alt={step.title}
+                    width={96}
+                    height={96}
+                    quality={100}
+                    className={`w-full h-full object-cover transition-all duration-500 ${
+                      index === activeStep ? 'scale-110' : 'scale-100'
+                    }`}
+                    unoptimized
+                  />
+                )}
+              </button>
+
+              {/* Label */}
+              <div className="text-center mt-4">
+                <p className={`font-semibold text-sm transition-colors ${
+                  index === activeStep ? 'text-primary' : 'text-muted-foreground'
+                }`}>
+                  {step.title}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Active Step Display */}
+      <Card className="border-2 border-primary/20 shadow-2xl overflow-hidden">
+        <CardContent className="p-8 md:p-12">
+          <div className="text-center space-y-6">
+            {/* Image */}
+            <div className={`inline-flex w-72 h-48 md:w-96 md:h-64 rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800 transform transition-all duration-500 ${
+              isAnimating ? 'scale-110 rotate-3' : 'scale-100 rotate-0'
+            }`}>
+              <Image
+                src={workflowSteps[activeStep].image}
+                alt={workflowSteps[activeStep].title}
+                width={600}
+                height={400}
+                quality={100}
+                className="w-full h-full object-cover"
+                unoptimized
+              />
+            </div>
+
+            {/* Title */}
+            <h3 className="text-3xl md:text-4xl font-bold text-foreground">
+              {workflowSteps[activeStep].title}
+            </h3>
+
+            {/* Description */}
+            <p className="text-lg md:text-xl text-muted-foreground max-w-md mx-auto">
+              {workflowSteps[activeStep].description}
+            </p>
+
+            {/* Action Display */}
+            <div className={`inline-block transition-all duration-500 ${
+              isAnimating ? 'opacity-100 scale-100' : 'opacity-70 scale-95'
+            }`}>
+              <div className="px-6 py-3 rounded-full bg-gradient-to-r from-[#77461B] to-[#5c3615] text-white font-semibold text-lg shadow-lg">
+                ✓ {workflowSteps[activeStep].action}
+              </div>
+            </div>
+
+            {/* Interactive Mockup */}
+            <div className="mt-8 p-6 bg-gray-50 dark:bg-gray-900 rounded-xl border-2 border-gray-200 dark:border-gray-800">
+              <div className="space-y-4">
+                {/* Simulated Input Field */}
+                <div className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-300 dark:border-gray-700">
+                  <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
+                  <span className="text-sm text-muted-foreground">
+                    {activeStep === 0 && "Tag: #482"}
+                    {activeStep === 1 && "Weight: 850 lbs"}
+                    {activeStep === 2 && "Med: Penicillin 5ml"}
+                    {activeStep === 3 && "Total Cost: $1,245"}
+                  </span>
+                  <div className="ml-auto">
+                    <CheckCircle2 className="h-5 w-5 text-green-500" />
+                  </div>
+                </div>
+
+                {/* Progress Bar */}
+                <div className="flex items-center gap-2">
+                  <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-gradient-to-r from-green-500 to-emerald-600 rounded-full transition-all duration-1000"
+                      style={{ width: `${((activeStep + 1) / workflowSteps.length) * 100}%` }}
+                    />
+                  </div>
+                  <span className="text-xs font-semibold text-muted-foreground">
+                    {Math.round(((activeStep + 1) / workflowSteps.length) * 100)}%
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Bottom Text */}
+      <div className="text-center mt-8">
+        <p className="text-muted-foreground mb-2">
+          👆 Click any step above to explore the workflow
+        </p>
+        <p className="text-sm text-muted-foreground">
+          Complete workflow in under 60 seconds • Voice or manual entry • Real-time updates
+        </p>
+      </div>
+    </div>
+  )
+}
+
 // Voice Agent Phone Component
 function VoiceAgentPhone() {
   const [step, setStep] = useState(0)
@@ -506,156 +704,176 @@ export function LandingPage() {
             CattleOS brings all your cattle operation data together in one powerful,
             easy-to-use platform designed specifically for feedlot and cattle operations.
           </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            {features.map((feature, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <feature.icon className="h-10 w-10 text-primary mb-2" />
-                  <CardTitle>{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+
+          {/* Bento Box Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            {/* Featured Card - Real-Time Cost Tracking with Screenshot */}
+            <Card className="md:col-span-2 lg:row-span-2 bg-gradient-to-br from-[#77461B] to-[#5c3615] text-white border-none hover:shadow-2xl transition-all duration-300 group overflow-hidden relative">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-32 translate-x-32"></div>
+              <CardHeader className="relative z-10">
+                <div className="w-14 h-14 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center mb-4 group-hover:bg-white/20 transition-colors">
+                  <Clock className="h-8 w-8 text-white" />
+                </div>
+                <CardTitle className="text-2xl text-white">Real-Time Cost Tracking</CardTitle>
+              </CardHeader>
+              <CardContent className="relative z-10 space-y-6">
+                <p className="text-white/90 text-lg leading-relaxed">
+                  Know your exact cost of gain at any moment. No more guessing your break-even point.
+                  See live updates as you add feed, medications, and other costs.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm text-sm text-white border border-white/20">Live Updates</span>
+                  <span className="px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm text-sm text-white border border-white/20">Break-Even Analysis</span>
+                  <span className="px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm text-sm text-white border border-white/20">Cost Per Head</span>
+                </div>
+                {/* Screenshot */}
+                <div className="relative rounded-lg overflow-hidden border-2 border-white/20 shadow-2xl group-hover:border-white/30 transition-all">
+                  <Image
+                    src="/screen4.png"
+                    alt="Real-time cost tracking dashboard"
+                    width={600}
+                    height={400}
+                    quality={100}
+                    className="w-full h-auto"
+                    unoptimized
+                  />
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Pen-Based Resource Allocation with Image */}
+            <Card className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 border-primary/20 group overflow-hidden">
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src="/screen2.png"
+                  alt="Pen management interface"
+                  width={400}
+                  height={250}
+                  quality={100}
+                  className="w-full h-full object-cover"
+                  unoptimized
+                />
+              </div>
+              <CardHeader>
+                <CardTitle className="group-hover:text-primary transition-colors">Pen-Based Resource Allocation</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Allocate feed, meds, and costs by pen. Track performance with precision.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Hands-Free Data Capture with Image */}
+            <Card className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 border-primary/20 group overflow-hidden">
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src="/screen3.png"
+                  alt="Voice command interface"
+                  width={400}
+                  height={250}
+                  quality={100}
+                  className="w-full h-full object-cover"
+                  unoptimized
+                />
+              </div>
+              <CardHeader>
+                <CardTitle className="group-hover:text-primary transition-colors">Hands-Free Data Capture</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Voice commands and NFC tags eliminate manual paperwork in the field.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Profit Optimization with Image */}
+            <Card className="md:col-span-2 lg:col-span-1 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 border-primary/20 group overflow-hidden">
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src="/screen_pens.png"
+                  alt="Profit optimization dashboard"
+                  width={400}
+                  height={250}
+                  quality={100}
+                  className="w-full h-full object-cover"
+                  unoptimized
+                />
+              </div>
+              <CardHeader>
+                <CardTitle className="group-hover:text-primary transition-colors">
+                  Profit Optimization
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Identify which pens are profitable and which need adjustments before it's too late.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Eliminate Paperwork with Image */}
+            <Card className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 border-primary/20 group overflow-hidden">
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src="/screen6.png"
+                  alt="Paperless workflow"
+                  width={400}
+                  height={250}
+                  quality={100}
+                  className="w-full h-full object-cover"
+                  unoptimized
+                />
+              </div>
+              <CardHeader>
+                <CardTitle className="group-hover:text-primary transition-colors">Eliminate Paperwork</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Stop juggling spreadsheets, notebooks, and receipts. Everything in one place.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Instant Insights with Image */}
+            <Card className="hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-2 border-primary/20 group overflow-hidden">
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src="/screen7.png"
+                  alt="Analytics dashboard"
+                  width={400}
+                  height={250}
+                  quality={100}
+                  className="w-full h-full object-cover"
+                  unoptimized
+                />
+              </div>
+              <CardHeader>
+                <CardTitle className="group-hover:text-primary transition-colors">Instant Insights</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Make data-driven decisions with real-time analytics and reporting.
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
-      {/* How It Works - Interactive Walkthrough */}
+      {/* How It Works - Interactive Animated Demo */}
       <section className="py-16 md:py-20 bg-white dark:bg-gray-950">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12 md:mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
-                How CattleOS Works
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Get up and running in minutes. Our streamlined workflow makes cattle management effortless.
-              </p>
-            </div>
-
-            {/* Interactive Carousel */}
-            <div className="relative">
-              <Card className="border-2 border-primary/20 shadow-2xl overflow-hidden">
-                <CardContent className="p-0">
-                  <div className="grid md:grid-cols-2 gap-0">
-                    {/* Left side - Step content */}
-                    <div className="p-8 md:p-12 bg-card">
-                      <div className="mb-6">
-                        <div className="inline-flex w-16 h-16 md:w-20 md:h-20 rounded-lg bg-primary/10 items-center justify-center mb-4 transition-all duration-300">
-                          {(() => {
-                            const StepIcon = walkthroughSteps[currentStep].icon
-                            return <StepIcon className="h-8 w-8 md:h-10 md:w-10 text-primary" />
-                          })()}
-                        </div>
-                        <div className="flex items-center gap-3 mb-4">
-                          <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground text-sm font-bold shadow-sm">
-                            {walkthroughSteps[currentStep].step}
-                          </span>
-                          <h3 className="text-2xl md:text-3xl font-bold text-foreground">
-                            {walkthroughSteps[currentStep].title}
-                          </h3>
-                        </div>
-                      </div>
-
-                      <p className="text-base md:text-lg text-muted-foreground mb-6 leading-relaxed">
-                        {walkthroughSteps[currentStep].description}
-                      </p>
-
-                      <div className="space-y-3 mb-8">
-                        <p className="text-sm font-semibold text-foreground uppercase tracking-wide">Key Features:</p>
-                        {walkthroughSteps[currentStep].highlights.map((highlight, idx) => (
-                          <div key={idx} className="flex items-start gap-3">
-                            <div className="flex-shrink-0 mt-0.5">
-                              <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center">
-                                <Check className="h-3 w-3 text-primary" />
-                              </div>
-                            </div>
-                            <span className="text-sm md:text-base text-muted-foreground">{highlight}</span>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Navigation Controls */}
-                      <div className="flex items-center justify-between pt-6 border-t">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={previousStep}
-                          className="gap-2"
-                        >
-                          <ChevronLeft className="h-4 w-4" />
-                          Previous
-                        </Button>
-
-                        {/* Step Indicators */}
-                        <div className="flex gap-2">
-                          {walkthroughSteps.map((_, idx) => (
-                            <button
-                              key={idx}
-                              onClick={() => setCurrentStep(idx)}
-                              className={`h-2 rounded-full transition-all duration-300 ${
-                                idx === currentStep
-                                  ? 'w-8 bg-primary'
-                                  : 'w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50'
-                              }`}
-                              aria-label={`Go to step ${idx + 1}`}
-                            />
-                          ))}
-                        </div>
-
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={nextStep}
-                          className="gap-2"
-                        >
-                          Next
-                          <ChevronRight className="h-4 w-4" />
-                        </Button>
-                      </div>
-                    </div>
-
-                    {/* Right side - Screenshot */}
-                    <div className="hidden md:flex items-center justify-center bg-gray-100 dark:bg-gray-800 p-6 transition-all duration-500">
-                      <div className="relative w-full h-full flex items-center justify-center">
-                        <div className="relative w-full max-w-lg aspect-[4/3] bg-white rounded-lg shadow-xl overflow-hidden border">
-                          <Image
-                            src={walkthroughSteps[currentStep].image}
-                            alt={walkthroughSteps[currentStep].title}
-                            fill
-                            className="object-cover object-top transition-all duration-500"
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                            onError={(e) => {
-                              // Fallback to icon if image not found
-                              const target = e.target as HTMLImageElement
-                              target.style.display = 'none'
-                            }}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Call to Action */}
-              <div className="text-center mt-12">
-                <p className="text-lg text-muted-foreground mb-6">
-                  Ready to streamline your cattle operation?
-                </p>
-                <Button
-                  size="lg"
-                  className="gap-2"
-                  onClick={() => document.getElementById('loi-form')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  Start Your Free Trial
-                  <ArrowRight className="h-5 w-5" />
-                </Button>
-              </div>
-            </div>
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+              See How Easy It Is
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Add cattle and manage your entire operation in seconds, not hours.
+            </p>
           </div>
+
+          <InteractiveWorkflowDemo />
         </div>
       </section>
 
@@ -757,6 +975,67 @@ export function LandingPage() {
                       <span>Industry best practices</span>
                     </li>
                   </ul>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* AI Guardrails Section */}
+            <div className="mt-12 md:mt-16">
+              <Card className="border-2 border-primary/20 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-950">
+                <CardHeader>
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <Shield className="h-8 w-8 md:h-10 md:w-10 text-primary" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl md:text-2xl">AI with Guardrails: Your Data Stays Secure</CardTitle>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                    CattleOS uses proprietary AI Data Mesh Layers that create secure boundaries around your operation's data.
+                    Our AI only uses data within your platform—never external sources—ensuring your sensitive cattle and cost
+                    information never leaks or gets shared with third parties.
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-4 mt-6">
+                    <div className="flex items-start gap-3 p-4 rounded-lg bg-white dark:bg-gray-900 border border-primary/10">
+                      <Lock className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                      <div>
+                        <h4 className="font-semibold mb-1">Platform-Only Data</h4>
+                        <p className="text-sm text-muted-foreground">
+                          AI models train exclusively on your farm's data within CattleOS—no external data sources
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3 p-4 rounded-lg bg-white dark:bg-gray-900 border border-primary/10">
+                      <Shield className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                      <div>
+                        <h4 className="font-semibold mb-1">Data Mesh Architecture</h4>
+                        <p className="text-sm text-muted-foreground">
+                          Proprietary mesh layers prevent data leakage and ensure complete isolation between operations
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3 p-4 rounded-lg bg-white dark:bg-gray-900 border border-primary/10">
+                      <Eye className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                      <div>
+                        <h4 className="font-semibold mb-1">No Cross-Contamination</h4>
+                        <p className="text-sm text-muted-foreground">
+                          Your data never trains models for other farms—complete privacy and competitive advantage
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3 p-4 rounded-lg bg-white dark:bg-gray-900 border border-primary/10">
+                      <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                      <div>
+                        <h4 className="font-semibold mb-1">Transparent AI</h4>
+                        <p className="text-sm text-muted-foreground">
+                          Understand exactly what data the AI uses and how recommendations are generated
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             </div>
