@@ -601,7 +601,7 @@ export function LandingPage() {
                 <a href="https://app.cattleos.com">
                   <Button variant="ghost" size="sm" className="text-xs md:text-sm px-2 md:px-4 rounded-full">Sign In</Button>
                 </a>
-                <a href="https://app.cattleos.com/signup">
+                <a href="https://cattleos.com/signup">
                   <Button size="sm" className="text-xs md:text-sm px-3 md:px-4 rounded-full">Get Started</Button>
                 </a>
               </div>
@@ -657,7 +657,7 @@ export function LandingPage() {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3">
-                <a href="https://app.cattleos.com/signup" className="w-full sm:w-auto">
+                <a href="https://cattleos.com/signup" className="w-full sm:w-auto">
                   <Button
                     size="default"
                     className="w-full sm:w-auto text-lg sm:text-base px-8 py-6 sm:px-6 sm:py-5 bg-[#77461B] hover:bg-[#5c3615] text-white rounded-full shadow-xl hover:shadow-[#77461B]/50 transition-all duration-300 hover:scale-105"
