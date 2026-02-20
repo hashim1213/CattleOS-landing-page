@@ -295,9 +295,9 @@ export function LandingPage() {
 
         {/* Content */}
         <div className="relative z-20 container mx-auto px-4 md:px-8 h-full flex items-end pb-20 md:pb-32">
-          <div className="max-w-3xl">
+          <div className="max-w-2xl">
             {/* Main Headline */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-6 leading-[1.1] tracking-tight">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight tracking-tight">
               Your Spreadsheets Are
               <br />
               So Messy,
@@ -306,24 +306,24 @@ export function LandingPage() {
             </h1>
 
             {/* Subtitle */}
-            <p className="text-xl md:text-2xl text-white/80 mb-10 max-w-2xl leading-relaxed font-light">
+            <p className="text-base md:text-lg text-white/80 mb-8 max-w-xl leading-relaxed font-light">
               Professional cattle management with real-time inventory tracking, cost management, and performance analytics.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3">
               <a href="https://app.cattleos.com/signup">
                 <Button
-                  size="lg"
-                  className="text-lg px-10 py-7 bg-[#77461B] hover:bg-[#5c3615] text-white rounded-full shadow-2xl hover:shadow-[#77461B]/50 transition-all duration-300 hover:scale-105"
+                  size="default"
+                  className="text-base px-6 py-5 bg-[#77461B] hover:bg-[#5c3615] text-white rounded-full shadow-xl hover:shadow-[#77461B]/50 transition-all duration-300 hover:scale-105"
                 >
-                  Get Started <ArrowRight className="ml-2 h-5 w-5" />
+                  Get Started <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </a>
               <Button
-                size="lg"
+                size="default"
                 variant="outline"
-                className="text-lg px-10 py-7 bg-white/10 backdrop-blur-md text-white border-white/30 hover:bg-white/20 rounded-full transition-all duration-300"
+                className="text-base px-6 py-5 bg-white/10 backdrop-blur-md text-white border-white/30 hover:bg-white/20 rounded-full transition-all duration-300"
                 onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Learn More
