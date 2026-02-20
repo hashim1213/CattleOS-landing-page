@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import React, { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -39,6 +39,167 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+
+// Voice Agent Demo Component
+function VoiceAgentDemo() {
+  const [step, setStep] = useState(0)
+  const [isAnimating, setIsAnimating] = useState(true)
+
+  const conversation = [
+    { type: 'user', text: 'Add 5ml of penicillin to pen 7, cow tag 482', delay: 0 },
+    { type: 'processing', text: 'Processing...', delay: 2000 },
+    { type: 'action', text: 'Adding medication record...', delay: 3500 },
+    { type: 'success', text: '✓ Medication added to Cow #482, Pen 7', delay: 5000 },
+    { type: 'details', text: '5ml Penicillin • Withdrawal: 60 days', delay: 6000 },
+  ]
+
+  React.useEffect(() => {
+    if (!isAnimating) return
+
+    const timer = setTimeout(() => {
+      if (step < conversation.length - 1) {
+        setStep(step + 1)
+      } else {
+        // Reset animation after a pause
+        setTimeout(() => {
+          setStep(0)
+        }, 3000)
+      }
+    }, conversation[step]?.delay || 2000)
+
+    return () => clearTimeout(timer)
+  }, [step, isAnimating, conversation])
+
+  return (
+    <section className="py-16 md:py-20 bg-gradient-to-b from-background to-gray-50 dark:to-gray-900">
+      <div className="container mx-auto px-4">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Voice-Powered Cattle Management
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Just speak naturally. CattleOS understands and takes action instantly.
+            </p>
+          </div>
+
+          {/* Demo Interface */}
+          <Card className="border-2 border-primary/20 shadow-2xl overflow-hidden bg-white dark:bg-gray-950">
+            <CardContent className="p-0">
+              {/* Header */}
+              <div className="bg-gradient-to-r from-[#77461B] to-[#5c3615] p-4 flex items-center gap-3">
+                <Image
+                  src="/Icon (Cream) - CattleOS.png"
+                  alt="CattleOS Voice Agent"
+                  width={40}
+                  height={40}
+                  className="rounded-lg"
+                />
+                <div>
+                  <h3 className="text-white font-semibold">CattleOS Voice Agent</h3>
+                  <p className="text-white/70 text-sm">Always listening, always ready</p>
+                </div>
+                <div className="ml-auto flex gap-1">
+                  {isAnimating && (
+                    <>
+                      <div className="w-1 h-4 bg-green-400 rounded-full animate-pulse"></div>
+                      <div className="w-1 h-4 bg-green-400 rounded-full animate-pulse delay-75"></div>
+                      <div className="w-1 h-4 bg-green-400 rounded-full animate-pulse delay-150"></div>
+                    </>
+                  )}
+                </div>
+              </div>
+
+              {/* Conversation */}
+              <div className="p-6 md:p-8 min-h-[300px] space-y-4">
+                {conversation.slice(0, step + 1).map((message, index) => (
+                  <div
+                    key={index}
+                    className={`flex items-start gap-3 animate-in fade-in slide-in-from-bottom-4 duration-500 ${
+                      message.type === 'user' ? 'justify-end' : 'justify-start'
+                    }`}
+                  >
+                    {message.type !== 'user' && (
+                      <div className="flex-shrink-0">
+                        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                          <Brain className="h-4 w-4 text-primary" />
+                        </div>
+                      </div>
+                    )}
+
+                    <div
+                      className={`rounded-2xl px-4 py-3 max-w-[80%] ${
+                        message.type === 'user'
+                          ? 'bg-primary text-primary-foreground'
+                          : message.type === 'processing'
+                          ? 'bg-blue-100 dark:bg-blue-950 text-blue-900 dark:text-blue-100'
+                          : message.type === 'action'
+                          ? 'bg-orange-100 dark:bg-orange-950 text-orange-900 dark:text-orange-100'
+                          : message.type === 'success'
+                          ? 'bg-green-100 dark:bg-green-950 text-green-900 dark:text-green-100 font-semibold'
+                          : 'bg-muted text-muted-foreground text-sm'
+                      }`}
+                    >
+                      {message.text}
+                    </div>
+
+                    {message.type === 'user' && (
+                      <div className="flex-shrink-0">
+                        <div className="w-8 h-8 rounded-full bg-gray-300 dark:bg-gray-700 flex items-center justify-center">
+                          <Users className="h-4 w-4 text-gray-600 dark:text-gray-300" />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+
+                {step === conversation.length - 1 && (
+                  <div className="flex justify-center pt-4">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 dark:bg-green-950 text-green-800 dark:text-green-200 text-sm font-medium">
+                      <CheckCircle2 className="h-4 w-4" />
+                      Action Completed
+                    </div>
+                  </div>
+                )}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Features */}
+          <div className="grid md:grid-cols-3 gap-6 mt-12">
+            <div className="text-center">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                <Zap className="h-6 w-6 text-primary" />
+              </div>
+              <h4 className="font-semibold mb-2">Instant Recording</h4>
+              <p className="text-sm text-muted-foreground">
+                Medications, weights, and treatments recorded instantly
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                <Brain className="h-6 w-6 text-primary" />
+              </div>
+              <h4 className="font-semibold mb-2">AI Understanding</h4>
+              <p className="text-sm text-muted-foreground">
+                Understands natural speech and cattle terminology
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                <CheckCircle2 className="h-6 w-6 text-primary" />
+              </div>
+              <h4 className="font-semibold mb-2">Hands-Free</h4>
+              <p className="text-sm text-muted-foreground">
+                Work with your cattle while recording data
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
 
 export function LandingPage() {
   const { toast } = useToast()
@@ -332,6 +493,9 @@ export function LandingPage() {
           </div>
         </div>
       </section>
+
+      {/* Voice Agent Demo Section */}
+      <VoiceAgentDemo />
 
       {/* Features Section */}
       <section id="features" className="container mx-auto px-4 py-16 md:py-20">
