@@ -154,77 +154,75 @@ function InteractiveWorkflowDemo() {
       </div>
 
       {/* Active Step Display */}
-      <Card className="border-2 border-primary/20 shadow-2xl overflow-hidden">
-        <CardContent className="p-8 md:p-12">
-          <div className="text-center space-y-6">
-            {/* Image */}
-            <div className={`w-full max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800 transform transition-all duration-500 ${
-              isAnimating ? 'scale-105' : 'scale-100'
-            }`}>
-              <Image
-                src={workflowSteps[activeStep].image}
-                alt={workflowSteps[activeStep].title}
-                width={1200}
-                height={800}
-                quality={100}
-                className="w-full h-auto object-contain"
-                unoptimized
-              />
+      <div className="p-8 md:p-12">
+        <div className="text-center space-y-6">
+          {/* Image */}
+          <div className={`w-full max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800 transform transition-all duration-500 ${
+            isAnimating ? 'scale-105' : 'scale-100'
+          }`}>
+            <Image
+              src={workflowSteps[activeStep].image}
+              alt={workflowSteps[activeStep].title}
+              width={1200}
+              height={800}
+              quality={100}
+              className="w-full h-auto object-contain"
+              unoptimized
+            />
+          </div>
+
+          {/* Title */}
+          <h3 className="text-3xl md:text-4xl font-bold text-foreground">
+            {workflowSteps[activeStep].title}
+          </h3>
+
+          {/* Description */}
+          <p className="text-lg md:text-xl text-muted-foreground max-w-md mx-auto">
+            {workflowSteps[activeStep].description}
+          </p>
+
+          {/* Action Display */}
+          <div className={`inline-block transition-all duration-500 ${
+            isAnimating ? 'opacity-100 scale-100' : 'opacity-70 scale-95'
+          }`}>
+            <div className="px-6 py-3 rounded-full bg-gradient-to-r from-[#77461B] to-[#5c3615] text-white font-semibold text-lg shadow-lg">
+              ✓ {workflowSteps[activeStep].action}
             </div>
+          </div>
 
-            {/* Title */}
-            <h3 className="text-3xl md:text-4xl font-bold text-foreground">
-              {workflowSteps[activeStep].title}
-            </h3>
-
-            {/* Description */}
-            <p className="text-lg md:text-xl text-muted-foreground max-w-md mx-auto">
-              {workflowSteps[activeStep].description}
-            </p>
-
-            {/* Action Display */}
-            <div className={`inline-block transition-all duration-500 ${
-              isAnimating ? 'opacity-100 scale-100' : 'opacity-70 scale-95'
-            }`}>
-              <div className="px-6 py-3 rounded-full bg-gradient-to-r from-[#77461B] to-[#5c3615] text-white font-semibold text-lg shadow-lg">
-                ✓ {workflowSteps[activeStep].action}
+          {/* Interactive Mockup */}
+          <div className="mt-8 p-6 bg-gray-50 dark:bg-gray-900 rounded-xl border-2 border-gray-200 dark:border-gray-800">
+            <div className="space-y-4">
+              {/* Simulated Input Field */}
+              <div className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-300 dark:border-gray-700">
+                <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
+                <span className="text-sm text-muted-foreground">
+                  {activeStep === 0 && "Tag: #482"}
+                  {activeStep === 1 && "Weight: 850 lbs"}
+                  {activeStep === 2 && "Med: Penicillin 5ml"}
+                  {activeStep === 3 && "Total Cost: $1,245"}
+                </span>
+                <div className="ml-auto">
+                  <CheckCircle2 className="h-5 w-5 text-green-500" />
+                </div>
               </div>
-            </div>
 
-            {/* Interactive Mockup */}
-            <div className="mt-8 p-6 bg-gray-50 dark:bg-gray-900 rounded-xl border-2 border-gray-200 dark:border-gray-800">
-              <div className="space-y-4">
-                {/* Simulated Input Field */}
-                <div className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-300 dark:border-gray-700">
-                  <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
-                  <span className="text-sm text-muted-foreground">
-                    {activeStep === 0 && "Tag: #482"}
-                    {activeStep === 1 && "Weight: 850 lbs"}
-                    {activeStep === 2 && "Med: Penicillin 5ml"}
-                    {activeStep === 3 && "Total Cost: $1,245"}
-                  </span>
-                  <div className="ml-auto">
-                    <CheckCircle2 className="h-5 w-5 text-green-500" />
-                  </div>
+              {/* Progress Bar */}
+              <div className="flex items-center gap-2">
+                <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-gradient-to-r from-green-500 to-emerald-600 rounded-full transition-all duration-1000"
+                    style={{ width: `${((activeStep + 1) / workflowSteps.length) * 100}%` }}
+                  />
                 </div>
-
-                {/* Progress Bar */}
-                <div className="flex items-center gap-2">
-                  <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-gradient-to-r from-green-500 to-emerald-600 rounded-full transition-all duration-1000"
-                      style={{ width: `${((activeStep + 1) / workflowSteps.length) * 100}%` }}
-                    />
-                  </div>
-                  <span className="text-xs font-semibold text-muted-foreground">
-                    {Math.round(((activeStep + 1) / workflowSteps.length) * 100)}%
-                  </span>
-                </div>
+                <span className="text-xs font-semibold text-muted-foreground">
+                  {Math.round(((activeStep + 1) / workflowSteps.length) * 100)}%
+                </span>
               </div>
             </div>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   )
 }
@@ -927,11 +925,11 @@ export function LandingPage() {
 
             {/* AI Guardrails Section */}
             <div className="mt-12 md:mt-16">
-              <Card className="border-2 border-primary/20 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-950">
-                <CardHeader>
-                  <CardTitle className="text-xl md:text-2xl mb-4">AI with Guardrails: Your Data Stays Secure</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
+              <div>
+                <div className="mb-4">
+                  <h3 className="text-xl md:text-2xl font-semibold">AI with Guardrails: Your Data Stays Secure</h3>
+                </div>
+                <div className="space-y-4">
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
                     CattleOS uses proprietary AI Data Mesh Layers that create secure boundaries around your operation's data.
                     Our AI only uses data within your platform—never external sources—ensuring your sensitive cattle and cost
@@ -975,8 +973,8 @@ export function LandingPage() {
                       </div>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1148,7 +1146,7 @@ export function LandingPage() {
               </Card>
             </div>
 
-            <div className="mt-12 text-center bg-card border border-primary/20 rounded-lg p-6 md:p-8">
+            <div className="mt-12 text-center">
               <h3 className="text-xl md:text-2xl font-bold mb-3 text-foreground">Our Privacy Promise</h3>
               <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
                 We make money from subscriptions, not from your data. Your operation's information is confidential business data,
