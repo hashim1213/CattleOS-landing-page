@@ -157,16 +157,16 @@ function InteractiveWorkflowDemo() {
         <CardContent className="p-8 md:p-12">
           <div className="text-center space-y-6">
             {/* Image */}
-            <div className={`inline-flex w-72 h-48 md:w-96 md:h-64 rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800 transform transition-all duration-500 ${
-              isAnimating ? 'scale-110 rotate-3' : 'scale-100 rotate-0'
+            <div className={`w-full max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800 transform transition-all duration-500 ${
+              isAnimating ? 'scale-105' : 'scale-100'
             }`}>
               <Image
                 src={workflowSteps[activeStep].image}
                 alt={workflowSteps[activeStep].title}
-                width={600}
-                height={400}
+                width={1200}
+                height={800}
                 quality={100}
-                className="w-full h-full object-cover"
+                className="w-full h-auto object-contain"
                 unoptimized
               />
             </div>
@@ -224,16 +224,6 @@ function InteractiveWorkflowDemo() {
           </div>
         </CardContent>
       </Card>
-
-      {/* Bottom Text */}
-      <div className="text-center mt-8">
-        <p className="text-muted-foreground mb-2">
-          👆 Click any step above to explore the workflow
-        </p>
-        <p className="text-sm text-muted-foreground">
-          Complete workflow in under 60 seconds • Voice or manual entry • Real-time updates
-        </p>
-      </div>
     </div>
   )
 }
@@ -878,9 +868,9 @@ export function LandingPage() {
       </section>
 
       {/* AI-First Section */}
-      <section className="py-16 md:py-20 bg-gray-50 dark:bg-gray-900">
+      <section className="py-16 md:py-20 bg-gray-50 dark:bg-gray-900 overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12 md:mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
                 AI-Powered Intelligence
@@ -890,107 +880,58 @@ export function LandingPage() {
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-3 md:mb-4">
-                    <Activity className="h-8 w-8 md:h-10 md:w-10 text-blue-600 dark:text-blue-400" />
-                  </div>
-                  <CardTitle className="text-lg md:text-xl">AI-Powered Insights</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <p className="text-sm md:text-base text-muted-foreground">
-                    Machine learning models analyze your operation in real-time, predicting optimal marketing windows,
-                    detecting health issues early, and recommending ration adjustments.
-                  </p>
-                  <ul className="space-y-2 text-sm">
-                    <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                      <span>Predictive health monitoring</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                      <span>Smart cost forecasting</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                      <span>Automated anomaly detection</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+              {/* Image Side */}
+              <div className="relative order-2 lg:order-1">
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                  <Image
+                    src="/cattle_man.jpg"
+                    alt="Cattle rancher using CattleOS"
+                    width={600}
+                    height={700}
+                    quality={100}
+                    className="w-full h-auto object-cover"
+                    unoptimized
+                  />
+                </div>
+              </div>
 
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-lg bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mb-3 md:mb-4">
-                    <MessageCircle className="h-8 w-8 md:h-10 md:w-10 text-purple-600 dark:text-purple-400" />
+              {/* Content Side */}
+              <div className="order-1 lg:order-2 space-y-6">
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-bold mb-4">Talk to your data in natural language and have it compliant ready</h3>
+                    <p className="text-lg text-muted-foreground mb-6">
+                      Our AI assistant understands cattle terminology and your operation. Ask questions in plain English and get instant answers while maintaining full compliance.
+                    </p>
+                    <ul className="space-y-3">
+                      <li className="flex items-start gap-3">
+                        <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                        <span className="text-base">Voice-first data entry</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                        <span className="text-base">Conversational analytics</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                        <span className="text-base">Smart recommendations</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                        <span className="text-base">Automated compliance tracking</span>
+                      </li>
+                    </ul>
                   </div>
-                  <CardTitle className="text-lg md:text-xl">Natural Language Interface</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <p className="text-sm md:text-base text-muted-foreground">
-                    Talk to your farm data naturally. Ask questions in plain English and get instant answers.
-                    Our AI assistant understands cattle terminology and your operation.
-                  </p>
-                  <ul className="space-y-2 text-sm">
-                    <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                      <span>Voice-first data entry</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                      <span>Conversational analytics</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                      <span>Smart recommendations</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card className="hover:shadow-lg transition-shadow sm:col-span-2 lg:col-span-1">
-                <CardHeader>
-                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center mb-3 md:mb-4">
-                    <BarChart3 className="h-8 w-8 md:h-10 md:w-10 text-green-600 dark:text-green-400" />
-                  </div>
-                  <CardTitle className="text-lg md:text-xl">Continuous Learning</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <p className="text-sm md:text-base text-muted-foreground">
-                    The more you use CattleOS, the smarter it gets. Our AI learns from your operation's patterns
-                    and adapts to your specific management style.
-                  </p>
-                  <ul className="space-y-2 text-sm">
-                    <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                      <span>Personalized benchmarks</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                      <span>Custom alerts & workflows</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                      <span>Industry best practices</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </div>
 
             {/* AI Guardrails Section */}
             <div className="mt-12 md:mt-16">
               <Card className="border-2 border-primary/20 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-950">
                 <CardHeader>
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <Shield className="h-8 w-8 md:h-10 md:w-10 text-primary" />
-                    </div>
-                    <div>
-                      <CardTitle className="text-xl md:text-2xl">AI with Guardrails: Your Data Stays Secure</CardTitle>
-                    </div>
-                  </div>
+                  <CardTitle className="text-xl md:text-2xl mb-4">AI with Guardrails: Your Data Stays Secure</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
@@ -1049,10 +990,10 @@ export function LandingPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 md:mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
-                Works With Your Existing Tools
+                Integrations Coming Soon
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                CattleOS integrates seamlessly with the hardware and software you already use
+                CattleOS will integrate seamlessly with the hardware and software you already use
               </p>
             </div>
 
@@ -1460,9 +1401,15 @@ export function LandingPage() {
                   Professional cattle management software built for cow-calf operations and feedlots.
                   Helping ranchers make data-driven decisions with confidence.
                 </p>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-red-100 dark:bg-red-950/30 border border-red-200 dark:border-red-800 rounded mt-3">
-                  <MapPin className="h-3.5 w-3.5 text-red-700 dark:text-red-400" />
-                  <span className="text-xs font-semibold text-red-700 dark:text-red-400">Proudly Built in Canada</span>
+                <div className="inline-flex items-center gap-2 mt-3">
+                  <Image
+                    src="/canada.svg"
+                    alt="Canada"
+                    width={16}
+                    height={16}
+                    className="h-4 w-4"
+                  />
+                  <span className="text-xs font-semibold text-muted-foreground">Proudly Built in Canada</span>
                 </div>
               </div>
 
