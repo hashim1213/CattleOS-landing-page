@@ -296,12 +296,6 @@ export function LandingPage() {
         {/* Content */}
         <div className="relative z-20 container mx-auto px-4 py-20 md:py-32">
           <div className="max-w-5xl mx-auto text-center">
-            {/* Launch Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-8">
-              <Rocket className="h-4 w-4 text-white" />
-              <span className="text-sm font-medium text-white">Launching Q2 2026 • Early Access Available</span>
-            </div>
-
             {/* Main Headline */}
             <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-6 leading-[1.1] tracking-tight">
               Your Spreadsheets Are
