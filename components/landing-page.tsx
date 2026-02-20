@@ -40,8 +40,8 @@ import {
 import Link from "next/link"
 import Image from "next/image"
 
-// Voice Agent Demo Component
-function VoiceAgentDemo() {
+// Voice Agent Phone Component
+function VoiceAgentPhone() {
   const [step, setStep] = useState(0)
   const [isAnimating, setIsAnimating] = useState(true)
 
@@ -71,133 +71,116 @@ function VoiceAgentDemo() {
   }, [step, isAnimating, conversation])
 
   return (
-    <section className="py-16 md:py-20 bg-gradient-to-b from-background to-gray-50 dark:to-gray-900">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Voice-Powered Cattle Management
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Just speak naturally. CattleOS understands and takes action instantly.
-            </p>
-          </div>
+    <div className="relative">
+      {/* Phone Mockup */}
+      <div className="relative w-[340px] h-[680px] mx-auto">
+        {/* Phone Frame */}
+        <div className="absolute inset-0 bg-gray-900 rounded-[3rem] shadow-2xl border-[14px] border-gray-800">
+          {/* Notch */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-7 bg-gray-800 rounded-b-3xl z-10"></div>
 
-          {/* Demo Interface */}
-          <Card className="border-2 border-primary/20 shadow-2xl overflow-hidden bg-white dark:bg-gray-950">
-            <CardContent className="p-0">
-              {/* Header */}
-              <div className="bg-gradient-to-r from-[#77461B] to-[#5c3615] p-4 flex items-center gap-3">
-                <Image
-                  src="/Icon (Cream) - CattleOS.png"
-                  alt="CattleOS Voice Agent"
-                  width={40}
-                  height={40}
-                  className="rounded-lg"
-                />
-                <div>
-                  <h3 className="text-white font-semibold">CattleOS Voice Agent</h3>
-                  <p className="text-white/70 text-sm">Always listening, always ready</p>
-                </div>
-                <div className="ml-auto flex gap-1">
-                  {isAnimating && (
-                    <>
-                      <div className="w-1 h-4 bg-green-400 rounded-full animate-pulse"></div>
-                      <div className="w-1 h-4 bg-green-400 rounded-full animate-pulse delay-75"></div>
-                      <div className="w-1 h-4 bg-green-400 rounded-full animate-pulse delay-150"></div>
-                    </>
-                  )}
+          {/* Screen */}
+          <div className="relative h-full w-full bg-white rounded-[2.3rem] overflow-hidden">
+            {/* Status Bar */}
+            <div className="bg-gray-50 px-6 pt-3 pb-2 flex items-center justify-between text-xs">
+              <span className="font-semibold">9:41</span>
+              <div className="flex items-center gap-1">
+                <div className="flex gap-0.5">
+                  <div className="w-1 h-3 bg-gray-400 rounded-full"></div>
+                  <div className="w-1 h-3 bg-gray-400 rounded-full"></div>
+                  <div className="w-1 h-3 bg-gray-400 rounded-full"></div>
+                  <div className="w-1 h-3 bg-gray-800 rounded-full"></div>
                 </div>
               </div>
+            </div>
 
-              {/* Conversation */}
-              <div className="p-6 md:p-8 min-h-[300px] space-y-4">
-                {conversation.slice(0, step + 1).map((message, index) => (
-                  <div
-                    key={index}
-                    className={`flex items-start gap-3 animate-in fade-in slide-in-from-bottom-4 duration-500 ${
-                      message.type === 'user' ? 'justify-end' : 'justify-start'
-                    }`}
-                  >
-                    {message.type !== 'user' && (
-                      <div className="flex-shrink-0">
-                        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                          <Brain className="h-4 w-4 text-primary" />
-                        </div>
-                      </div>
-                    )}
-
-                    <div
-                      className={`rounded-2xl px-4 py-3 max-w-[80%] ${
-                        message.type === 'user'
-                          ? 'bg-primary text-primary-foreground'
-                          : message.type === 'processing'
-                          ? 'bg-blue-100 dark:bg-blue-950 text-blue-900 dark:text-blue-100'
-                          : message.type === 'action'
-                          ? 'bg-orange-100 dark:bg-orange-950 text-orange-900 dark:text-orange-100'
-                          : message.type === 'success'
-                          ? 'bg-green-100 dark:bg-green-950 text-green-900 dark:text-green-100 font-semibold'
-                          : 'bg-muted text-muted-foreground text-sm'
-                      }`}
-                    >
-                      {message.text}
-                    </div>
-
-                    {message.type === 'user' && (
-                      <div className="flex-shrink-0">
-                        <div className="w-8 h-8 rounded-full bg-gray-300 dark:bg-gray-700 flex items-center justify-center">
-                          <Users className="h-4 w-4 text-gray-600 dark:text-gray-300" />
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ))}
-
-                {step === conversation.length - 1 && (
-                  <div className="flex justify-center pt-4">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 dark:bg-green-950 text-green-800 dark:text-green-200 text-sm font-medium">
-                      <CheckCircle2 className="h-4 w-4" />
-                      Action Completed
-                    </div>
-                  </div>
+            {/* App Header */}
+            <div className="bg-gradient-to-r from-[#77461B] to-[#5c3615] px-4 py-3 flex items-center gap-3">
+              <Image
+                src="/Icon (Cream) - CattleOS.png"
+                alt="CattleOS"
+                width={32}
+                height={32}
+                className="rounded-lg"
+              />
+              <div className="flex-1">
+                <h3 className="text-white font-semibold text-sm">Voice Agent</h3>
+                <p className="text-white/70 text-xs">Listening...</p>
+              </div>
+              <div className="flex gap-1">
+                {isAnimating && (
+                  <>
+                    <div className="w-1 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                    <div className="w-1 h-3 bg-green-400 rounded-full animate-pulse delay-75"></div>
+                    <div className="w-1 h-3 bg-green-400 rounded-full animate-pulse delay-150"></div>
+                  </>
                 )}
               </div>
-            </CardContent>
-          </Card>
+            </div>
 
-          {/* Features */}
-          <div className="grid md:grid-cols-3 gap-6 mt-12">
-            <div className="text-center">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
-                <Zap className="h-6 w-6 text-primary" />
-              </div>
-              <h4 className="font-semibold mb-2">Instant Recording</h4>
-              <p className="text-sm text-muted-foreground">
-                Medications, weights, and treatments recorded instantly
-              </p>
+            {/* Conversation Area */}
+            <div className="p-4 space-y-3 h-[calc(100%-8rem)] overflow-y-auto">
+              {conversation.slice(0, step + 1).map((message, index) => (
+                <div
+                  key={index}
+                  className={`flex items-start gap-2 animate-in fade-in slide-in-from-bottom-2 duration-500 ${
+                    message.type === 'user' ? 'justify-end' : 'justify-start'
+                  }`}
+                >
+                  {message.type !== 'user' && (
+                    <div className="flex-shrink-0">
+                      <div className="w-6 h-6 rounded-full bg-[#77461B]/10 flex items-center justify-center">
+                        <Brain className="h-3 w-3 text-[#77461B]" />
+                      </div>
+                    </div>
+                  )}
+
+                  <div
+                    className={`rounded-2xl px-3 py-2 max-w-[75%] text-sm ${
+                      message.type === 'user'
+                        ? 'bg-[#77461B] text-white'
+                        : message.type === 'processing'
+                        ? 'bg-blue-100 text-blue-900'
+                        : message.type === 'action'
+                        ? 'bg-orange-100 text-orange-900'
+                        : message.type === 'success'
+                        ? 'bg-green-100 text-green-900 font-semibold'
+                        : 'bg-gray-100 text-gray-700 text-xs'
+                    }`}
+                  >
+                    {message.text}
+                  </div>
+                </div>
+              ))}
+
+              {step === conversation.length - 1 && (
+                <div className="flex justify-center pt-2">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-100 text-green-800 text-xs font-medium">
+                    <CheckCircle2 className="h-3 w-3" />
+                    Complete
+                  </div>
+                </div>
+              )}
             </div>
-            <div className="text-center">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
-                <Brain className="h-6 w-6 text-primary" />
+
+            {/* Bottom Input Area */}
+            <div className="absolute bottom-0 left-0 right-0 bg-gray-50 border-t border-gray-200 p-3">
+              <div className="flex items-center gap-2">
+                <div className="flex-1 bg-white rounded-full px-4 py-2 text-sm text-gray-400 border border-gray-200">
+                  Tap to speak...
+                </div>
+                <div className="w-9 h-9 rounded-full bg-[#77461B] flex items-center justify-center">
+                  <MessageCircle className="h-4 w-4 text-white" />
+                </div>
               </div>
-              <h4 className="font-semibold mb-2">AI Understanding</h4>
-              <p className="text-sm text-muted-foreground">
-                Understands natural speech and cattle terminology
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
-                <CheckCircle2 className="h-6 w-6 text-primary" />
-              </div>
-              <h4 className="font-semibold mb-2">Hands-Free</h4>
-              <p className="text-sm text-muted-foreground">
-                Work with your cattle while recording data
-              </p>
             </div>
           </div>
         </div>
+
+        {/* Phone shine effect */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent rounded-[3rem] pointer-events-none"></div>
       </div>
-    </section>
+    </div>
   )
 }
 
@@ -456,46 +439,51 @@ export function LandingPage() {
 
         {/* Content */}
         <div className="relative z-20 container mx-auto px-4 md:px-8 h-full flex items-end pb-4 md:pb-8">
-          <div className="max-w-2xl">
-            {/* Main Headline */}
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight tracking-tight">
-              Your Spreadsheets Are
-              <br />
-              So Messy,
-              <br />
-              Even The Cattle Are Confused.
-            </h1>
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-end w-full">
+            {/* Left: Text Content */}
+            <div className="max-w-2xl">
+              {/* Main Headline */}
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight tracking-tight">
+                Your Spreadsheets Are
+                <br />
+                So Messy,
+                <br />
+                Even The Cattle Are Confused.
+              </h1>
 
-            {/* Subtitle */}
-            <p className="text-base md:text-lg text-white/80 mb-8 max-w-xl leading-relaxed font-light">
-              Professional cattle management with real-time inventory tracking, cost management, and performance analytics.
-            </p>
+              {/* Subtitle */}
+              <p className="text-base md:text-lg text-white/80 mb-8 max-w-xl leading-relaxed font-light">
+                Professional cattle management with real-time inventory tracking, cost management, and performance analytics.
+              </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3">
-              <a href="https://app.cattleos.com/signup" className="w-full sm:w-auto">
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a href="https://app.cattleos.com/signup" className="w-full sm:w-auto">
+                  <Button
+                    size="default"
+                    className="w-full sm:w-auto text-lg sm:text-base px-8 py-6 sm:px-6 sm:py-5 bg-[#77461B] hover:bg-[#5c3615] text-white rounded-full shadow-xl hover:shadow-[#77461B]/50 transition-all duration-300 hover:scale-105"
+                  >
+                    Get Started <ArrowRight className="ml-2 h-5 w-5 sm:h-4 sm:w-4" />
+                  </Button>
+                </a>
                 <Button
                   size="default"
-                  className="w-full sm:w-auto text-lg sm:text-base px-8 py-6 sm:px-6 sm:py-5 bg-[#77461B] hover:bg-[#5c3615] text-white rounded-full shadow-xl hover:shadow-[#77461B]/50 transition-all duration-300 hover:scale-105"
+                  variant="outline"
+                  className="text-base px-6 py-5 bg-white/10 backdrop-blur-md text-white border-white/30 hover:bg-white/20 rounded-full transition-all duration-300"
+                  onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  Get Started <ArrowRight className="ml-2 h-5 w-5 sm:h-4 sm:w-4" />
+                  Learn More
                 </Button>
-              </a>
-              <Button
-                size="default"
-                variant="outline"
-                className="text-base px-6 py-5 bg-white/10 backdrop-blur-md text-white border-white/30 hover:bg-white/20 rounded-full transition-all duration-300"
-                onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                Learn More
-              </Button>
+              </div>
+            </div>
+
+            {/* Right: Phone Demo */}
+            <div className="hidden lg:block">
+              <VoiceAgentPhone />
             </div>
           </div>
         </div>
       </section>
-
-      {/* Voice Agent Demo Section */}
-      <VoiceAgentDemo />
 
       {/* Features Section */}
       <section id="features" className="container mx-auto px-4 py-16 md:py-20">
