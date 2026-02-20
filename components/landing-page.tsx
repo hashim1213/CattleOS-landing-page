@@ -35,7 +35,8 @@ import {
   Upload,
   Tags,
   Activity,
-  PieChart
+  PieChart,
+  Mail
 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
@@ -598,10 +599,10 @@ export function LandingPage() {
                 />
               </div>
               <div className="flex gap-2 flex-shrink-0">
-                <a href="https://app.cattleos.com">
+                <a href="https://app.cattleos.com/login">
                   <Button variant="ghost" size="sm" className="text-xs md:text-sm px-2 md:px-4 rounded-full">Sign In</Button>
                 </a>
-                <a href="https://cattleos.com/signup">
+                <a href="https://app.cattleos.com/signup">
                   <Button size="sm" className="text-xs md:text-sm px-3 md:px-4 rounded-full">Get Started</Button>
                 </a>
               </div>
@@ -657,7 +658,7 @@ export function LandingPage() {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3">
-                <a href="https://cattleos.com/signup" className="w-full sm:w-auto">
+                <a href="https://app.cattleos.com/signup" className="w-full sm:w-auto">
                   <Button
                     size="default"
                     className="w-full sm:w-auto text-lg sm:text-base px-8 py-6 sm:px-6 sm:py-5 bg-[#77461B] hover:bg-[#5c3615] text-white rounded-full shadow-xl hover:shadow-[#77461B]/50 transition-all duration-300 hover:scale-105"
@@ -701,9 +702,6 @@ export function LandingPage() {
             <Card className="md:col-span-2 lg:row-span-2 bg-gradient-to-br from-[#77461B] to-[#5c3615] text-white border-none hover:shadow-2xl transition-all duration-300 group overflow-hidden relative">
               <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-32 translate-x-32"></div>
               <CardHeader className="relative z-10">
-                <div className="w-14 h-14 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center mb-4 group-hover:bg-white/20 transition-colors">
-                  <Clock className="h-8 w-8 text-white" />
-                </div>
                 <CardTitle className="text-2xl text-white">Real-Time Cost Tracking</CardTitle>
               </CardHeader>
               <CardContent className="relative z-10 space-y-6">
@@ -1161,223 +1159,64 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="py-16 md:py-20 bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12 md:mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
-                Simple, Transparent Pricing
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Choose the plan that fits your operation size
-              </p>
-            </div>
-
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {/* Cow/Calf Plan */}
-              <Card className="relative hover:shadow-lg transition-all duration-300 border-2 flex flex-col">
-                <CardHeader className="text-center pb-8">
-                  <CardTitle className="text-2xl mb-2">Cow/Calf</CardTitle>
-                  <CardDescription>Perfect for cow-calf operations</CardDescription>
-                  <div className="mt-4">
-                    <div className="text-4xl font-bold text-foreground">$99</div>
-                    <div className="text-muted-foreground">/month</div>
-                    <p className="text-xs text-muted-foreground mt-2">billed annually: $1,188/year</p>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-4 flex-1 flex flex-col">
-                  <div className="space-y-3 flex-1">
-                    <div className="bg-muted/50 rounded-lg p-3 space-y-1">
-                      <p className="text-sm font-semibold">Capacity</p>
-                      <p className="text-xs text-muted-foreground">Up to 200 head</p>
-                      <p className="text-xs text-muted-foreground">15 pens • 1 user</p>
-                    </div>
-                    <ul className="space-y-2.5">
-                      <li className="flex items-start gap-2 text-sm">
-                        <Check className="h-4 w-4 text-green-600 flex-shrink-0 mt-0.5" />
-                        <span>Real-time cost tracking</span>
-                      </li>
-                      <li className="flex items-start gap-2 text-sm">
-                        <Check className="h-4 w-4 text-green-600 flex-shrink-0 mt-0.5" />
-                        <span>Cattle & pen management</span>
-                      </li>
-                      <li className="flex items-start gap-2 text-sm">
-                        <Check className="h-4 w-4 text-green-600 flex-shrink-0 mt-0.5" />
-                        <span>Basic health tracking</span>
-                      </li>
-                      <li className="flex items-start gap-2 text-sm">
-                        <Check className="h-4 w-4 text-green-600 flex-shrink-0 mt-0.5" />
-                        <span>Mobile app access</span>
-                      </li>
-                      <li className="flex items-start gap-2 text-sm">
-                        <Check className="h-4 w-4 text-green-600 flex-shrink-0 mt-0.5" />
-                        <span>Email support</span>
-                      </li>
-                    </ul>
-                    <div className="pt-3 border-t">
-                      <p className="text-xs text-muted-foreground mb-2 font-medium">Add-ons:</p>
-                      <p className="text-xs text-muted-foreground">+$10/month per 100 head over 200</p>
-                      <p className="text-xs text-muted-foreground">+$15/month per additional user</p>
-                    </div>
-                  </div>
-                  <Button className="w-full mt-4" onClick={() => document.getElementById('loi-form')?.scrollIntoView({ behavior: 'smooth' })}>
-                    Get Started
-                  </Button>
-                </CardContent>
-              </Card>
-
-              {/* Feedlot Plan - Featured */}
-              <Card className="relative hover:shadow-lg transition-all duration-300 border-2 border-[#2D6433] shadow-lg sm:col-span-2 lg:col-span-1 flex flex-col">
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <div className="bg-[#2D6433] text-white px-4 py-1 rounded-full text-sm font-semibold">
-                    Most Popular
-                  </div>
-                </div>
-                <CardHeader className="text-center pb-8 pt-8">
-                  <CardTitle className="text-2xl mb-2">Feedlot</CardTitle>
-                  <CardDescription>Built for commercial feedlot operations</CardDescription>
-                  <div className="mt-4">
-                    <div className="text-4xl font-bold text-foreground">$275</div>
-                    <div className="text-muted-foreground">/month</div>
-                    <p className="text-xs text-muted-foreground mt-2">billed annually: $3,300/year</p>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-4 flex-1 flex flex-col">
-                  <div className="space-y-3 flex-1">
-                    <div className="bg-primary/5 rounded-lg p-3 space-y-1">
-                      <p className="text-sm font-semibold">Capacity</p>
-                      <p className="text-xs text-muted-foreground">Up to 2,000 head</p>
-                      <p className="text-xs text-muted-foreground">40 pens • 3 users</p>
-                    </div>
-                    <p className="text-xs font-semibold text-primary">Everything in Cow/Calf, plus:</p>
-                    <ul className="space-y-2.5">
-                      <li className="flex items-start gap-2 text-sm">
-                        <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                        <span>Advanced health & treatment tracking</span>
-                      </li>
-                      <li className="flex items-start gap-2 text-sm">
-                        <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                        <span>EID tag integration</span>
-                      </li>
-                      <li className="flex items-start gap-2 text-sm">
-                        <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                        <span>Advanced ration management</span>
-                      </li>
-                      <li className="flex items-start gap-2 text-sm">
-                        <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                        <span>Voice & NFC data capture</span>
-                      </li>
-                      <li className="flex items-start gap-2 text-sm">
-                        <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                        <span>Team collaboration tools</span>
-                      </li>
-                      <li className="flex items-start gap-2 text-sm">
-                        <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                        <span>Priority phone & email support</span>
-                      </li>
-                    </ul>
-                    <div className="pt-3 border-t">
-                      <p className="text-xs text-muted-foreground mb-2 font-medium">Add-ons:</p>
-                      <p className="text-xs text-muted-foreground">+$8/month per 100 head over 2,000</p>
-                      <p className="text-xs text-muted-foreground">+$12/month per additional user</p>
-                      <p className="text-xs text-muted-foreground">+$5/month per 10 additional pens</p>
-                    </div>
-                  </div>
-                  <Button className="w-full mt-4" onClick={() => document.getElementById('loi-form')?.scrollIntoView({ behavior: 'smooth' })}>
-                    Get Started
-                  </Button>
-                </CardContent>
-              </Card>
-
-              {/* Enterprise Plan */}
-              <Card className="relative hover:shadow-lg transition-all duration-300 border-2 sm:col-span-2 lg:col-span-1 flex flex-col">
-                <CardHeader className="text-center pb-8">
-                  <CardTitle className="text-2xl mb-2">Enterprise</CardTitle>
-                  <CardDescription>Custom solutions for large operations</CardDescription>
-                  <div className="mt-4">
-                    <div className="text-4xl font-bold text-foreground">Custom</div>
-                    <div className="text-muted-foreground">Contact us</div>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-4 flex-1 flex flex-col">
-                  <div className="space-y-3 flex-1">
-                    <div className="bg-purple-50 dark:bg-purple-950/20 rounded-lg p-3 space-y-1">
-                      <p className="text-sm font-semibold">Capacity</p>
-                      <p className="text-xs text-muted-foreground">Unlimited head</p>
-                      <p className="text-xs text-muted-foreground">Unlimited pens • Unlimited users</p>
-                    </div>
-                    <p className="text-xs font-semibold text-purple-600">Everything in Feedlot, plus:</p>
-                    <ul className="space-y-2.5">
-                      <li className="flex items-start gap-2 text-sm">
-                        <Check className="h-4 w-4 text-purple-600 flex-shrink-0 mt-0.5" />
-                        <span>Multi-location management</span>
-                      </li>
-                      <li className="flex items-start gap-2 text-sm">
-                        <Check className="h-4 w-4 text-purple-600 flex-shrink-0 mt-0.5" />
-                        <span>Custom integrations & API access</span>
-                      </li>
-                      <li className="flex items-start gap-2 text-sm">
-                        <Check className="h-4 w-4 text-purple-600 flex-shrink-0 mt-0.5" />
-                        <span>Dedicated account manager</span>
-                      </li>
-                      <li className="flex items-start gap-2 text-sm">
-                        <Check className="h-4 w-4 text-purple-600 flex-shrink-0 mt-0.5" />
-                        <span>On-premise deployment options</span>
-                      </li>
-                      <li className="flex items-start gap-2 text-sm">
-                        <Check className="h-4 w-4 text-purple-600 flex-shrink-0 mt-0.5" />
-                        <span>Custom training & onboarding</span>
-                      </li>
-                      <li className="flex items-start gap-2 text-sm">
-                        <Check className="h-4 w-4 text-purple-600 flex-shrink-0 mt-0.5" />
-                        <span>24/7 priority support with SLA</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <Button variant="outline" className="w-full mt-4" onClick={() => document.getElementById('loi-form')?.scrollIntoView({ behavior: 'smooth' })}>
-                    Contact Sales
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Sign Up Section */}
+      {/* Sign Up & Pricing Section */}
       <section id="loi-form" className="container mx-auto px-4 py-16 md:py-24">
-        <div className="max-w-4xl mx-auto">
-          <Card className="border-2 border-primary/20 shadow-2xl">
-            <CardContent className="p-8 md:p-12 text-center">
-              <div className="mb-8">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
-                  Ready to Transform Your Cattle Operation?
-                </h2>
-                <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                  Join CattleOS today and start managing your herd with confidence.
-                  Get real-time insights, track costs, and make data-driven decisions.
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
+            {/* Sign Up Card */}
+            <Card className="border-2 border-primary/20 shadow-2xl">
+              <CardContent className="p-8 md:p-12 text-center flex flex-col justify-center h-full">
+                <div className="mb-8">
+                  <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
+                    Ready to Transform Your Cattle Operation?
+                  </h2>
+                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                    Join CattleOS today and start managing your herd with confidence.
+                    Get real-time insights, track costs, and make data-driven decisions.
+                  </p>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
+                  <a href="https://app.cattleos.com/signup">
+                    <Button size="lg" className="text-lg px-8 py-6 bg-[#77461B] hover:bg-[#5c3615] text-white min-w-[200px]">
+                      Sign Up Now <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </a>
+                  <a href="https://app.cattleos.com/login">
+                    <Button size="lg" variant="outline" className="text-lg px-8 py-6 min-w-[200px]">
+                      Sign In
+                    </Button>
+                  </a>
+                </div>
+
+                <p className="text-sm text-muted-foreground">
+                  Start free today • No credit card required • Full access to all features
                 </p>
-              </div>
+              </CardContent>
+            </Card>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-                <Link href="/signup">
-                  <Button size="lg" className="text-lg px-8 py-6 bg-[#77461B] hover:bg-[#5c3615] text-white min-w-[200px]">
-                    Sign Up Now <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
-                <Link href="/login">
-                  <Button size="lg" variant="outline" className="text-lg px-8 py-6 min-w-[200px]">
-                    Sign In
-                  </Button>
-                </Link>
-              </div>
-
-              <p className="text-sm text-muted-foreground">
-                Start free today • No credit card required • Full access to all features
-              </p>
-            </CardContent>
-          </Card>
+            {/* Pricing Card */}
+            <Card id="pricing" className="border-2 border-primary/20 shadow-2xl">
+              <CardContent className="p-8 md:p-12 text-center flex flex-col justify-center h-full">
+                <div className="mb-6">
+                  <Mail className="h-16 w-16 text-primary mx-auto mb-4" />
+                  <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">
+                    Contact Us for Pricing
+                  </h3>
+                  <p className="text-lg text-muted-foreground mb-6">
+                    Get custom pricing tailored to your operation's needs
+                  </p>
+                </div>
+                <a
+                  href="mailto:pavan@cattleos.com"
+                  className="inline-flex items-center gap-2 text-lg font-semibold text-primary hover:text-primary/80 transition-colors"
+                >
+                  <Mail className="h-5 w-5" />
+                  pavan@cattleos.com
+                </a>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
@@ -1420,7 +1259,7 @@ export function LandingPage() {
                   <li><a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">Features</a></li>
                   <li><a href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors">Pricing</a></li>
                   <li><a href="#loi-form" className="text-muted-foreground hover:text-foreground transition-colors">Get Started</a></li>
-                  <li><Link href="/login" className="text-muted-foreground hover:text-foreground transition-colors">Sign In</Link></li>
+                  <li><a href="https://app.cattleos.com/login" className="text-muted-foreground hover:text-foreground transition-colors">Sign In</a></li>
                 </ul>
               </div>
 
