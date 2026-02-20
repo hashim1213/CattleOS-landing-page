@@ -278,7 +278,7 @@ export function LandingPage() {
       <section className="relative overflow-hidden -mt-[120px] pt-[120px] min-h-screen flex items-center">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 top-[-120px] z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-background z-10" />
+          <div className="absolute inset-0 bg-black/60 z-10" />
           <Image
             src="/cow_moo.webp"
             alt="Cattle farm"
@@ -335,13 +335,6 @@ export function LandingPage() {
                 Learn More
               </Button>
             </div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce">
-          <div className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-2">
-            <div className="w-1 h-3 bg-white/60 rounded-full"></div>
           </div>
         </div>
       </section>
