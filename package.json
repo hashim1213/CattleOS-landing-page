@@ -1,0 +1,41 @@
+{
+  "name": "cattleos-landing",
+  "version": "1.0.0",
+  "description": "CattleOS landing page and public pages",
+  "author": "CattleOS Inc.",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3001",
+    "build": "next build",
+    "start": "next start --port 3001",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@radix-ui/react-checkbox": "^1.1.3",
+    "@radix-ui/react-label": "2.1.1",
+    "@radix-ui/react-slot": "^1.1.1",
+    "@radix-ui/react-toast": "1.2.4",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "firebase": "^12.5.0",
+    "lucide-react": "^0.454.0",
+    "next": "^16.1.6",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
+    "tailwind-merge": "^2.5.5",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.9",
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "^16.1.6",
+    "postcss": "^8",
+    "tailwindcss": "^4.1.9",
+    "typescript": "^5"
+  }
+}

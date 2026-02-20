@@ -1,0 +1,944 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+/* CattleOS Brand Colors:
+   Primary Brown: #77461B
+   Secondary Green: #2D6433
+   Cream: #F5F3ED
+*/
+
+:root {
+  --background: oklch(0.97 0.01 85);
+  --foreground: oklch(0.20 0.01 45);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.20 0.01 45);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.20 0.01 45);
+  --primary: oklch(0.42 0.10 55);
+  --primary-foreground: oklch(0.99 0.005 50);
+  --secondary: oklch(0.42 0.12 145);
+  --secondary-foreground: oklch(0.99 0.005 50);
+  --muted: oklch(0.96 0.01 85);
+  --muted-foreground: oklch(0.55 0.02 45);
+  --accent: oklch(0.50 0.10 55);
+  --accent-foreground: oklch(0.99 0.005 45);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.99 0.005 60);
+  --border: oklch(0.90 0.015 55);
+  --input: oklch(0.90 0.015 55);
+  --ring: oklch(0.42 0.10 55);
+  --chart-1: oklch(0.42 0.12 145);
+  --chart-2: oklch(0.50 0.10 55);
+  --chart-3: oklch(0.45 0.06 50);
+  --chart-4: oklch(0.65 0.06 180);
+  --chart-5: oklch(0.55 0.07 160);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.28 0.05 55);
+  --sidebar-foreground: oklch(0.99 0.005 60);
+  --sidebar-primary: oklch(0.50 0.10 55);
+  --sidebar-primary-foreground: oklch(0.99 0.005 45);
+  --sidebar-accent: oklch(0.38 0.06 55);
+  --sidebar-accent-foreground: oklch(0.99 0.005 45);
+  --sidebar-border: oklch(0.22 0.03 55);
+  --sidebar-ring: oklch(0.50 0.10 55);
+}
+
+.dark {
+  --background: oklch(0.15 0.01 55);
+  --foreground: oklch(0.97 0.005 60);
+  --card: oklch(0.20 0.01 55);
+  --card-foreground: oklch(0.97 0.005 60);
+  --popover: oklch(0.20 0.01 55);
+  --popover-foreground: oklch(0.97 0.005 60);
+  --primary: oklch(0.55 0.10 55);
+  --primary-foreground: oklch(0.15 0.01 55);
+  --secondary: oklch(0.50 0.12 145);
+  --secondary-foreground: oklch(0.97 0.005 60);
+  --muted: oklch(0.25 0.01 55);
+  --muted-foreground: oklch(0.70 0.02 55);
+  --accent: oklch(0.55 0.10 55);
+  --accent-foreground: oklch(0.97 0.005 60);
+  --destructive: oklch(0.55 0.20 25);
+  --destructive-foreground: oklch(0.97 0.005 60);
+  --border: oklch(0.30 0.01 55);
+  --input: oklch(0.30 0.01 55);
+  --ring: oklch(0.55 0.10 55);
+  --chart-1: oklch(0.55 0.12 145);
+  --chart-2: oklch(0.60 0.10 55);
+  --chart-3: oklch(0.55 0.06 50);
+  --chart-4: oklch(0.70 0.06 180);
+  --chart-5: oklch(0.62 0.07 160);
+  --sidebar: oklch(0.18 0.03 55);
+  --sidebar-foreground: oklch(0.97 0.005 60);
+  --sidebar-primary: oklch(0.55 0.10 55);
+  --sidebar-primary-foreground: oklch(0.97 0.005 60);
+  --sidebar-accent: oklch(0.30 0.05 55);
+  --sidebar-accent-foreground: oklch(0.97 0.005 60);
+  --sidebar-border: oklch(0.25 0.02 55);
+  --sidebar-ring: oklch(0.55 0.10 55);
+}
+
+@theme inline {
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  /* CattleOS Brand Colors */
+  --color-background: #F5F3ED;
+  --color-foreground: #1a1a1a;
+  --color-card: #ffffff;
+  --color-card-foreground: #1a1a1a;
+  --color-primary: #77461B;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #2D6433;
+  --color-secondary-foreground: #ffffff;
+  --color-muted: #F5F3ED;
+  --color-muted-foreground: #718096;
+  --color-accent: #77461B;
+  --color-accent-foreground: #ffffff;
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #ffffff;
+  --color-border: #E8DFD5;
+  --color-input: #E8DFD5;
+  --color-ring: #77461B;
+
+  /* Alert colors with cattle theme */
+  --color-success: #2D6433;
+  --color-warning: #ea580c;
+  --color-danger: #dc2626;
+
+  --radius: 0.5rem;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    /* Prevent rubber-band scrolling on iOS */
+    overscroll-behavior-y: none;
+  }
+
+  /* Mobile sidebar full height fix */
+  .mobile-sidebar-full-height {
+    height: 100vh;
+    height: 100dvh;
+    height: -webkit-fill-available;
+    min-height: 100vh;
+    min-height: 100dvh;
+    max-height: 100vh;
+    max-height: 100dvh;
+  }
+
+  /* iOS Safe Area Support */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .safe-left {
+    padding-left: env(safe-area-inset-left);
+  }
+  .safe-right {
+    padding-right: env(safe-area-inset-right);
+  }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  /* ========================================
+     CAPACITOR NATIVE APP SAFE AREA FIXES
+     ======================================== */
+  
+  /* Dynamic Island / Notch safe area - explicit pixel values as fallback */
+  :root {
+    --safe-area-top: env(safe-area-inset-top, 0px);
+    --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-area-left: env(safe-area-inset-left, 0px);
+    --safe-area-right: env(safe-area-inset-right, 0px);
+    
+    /* Dynamic Island on iPhone 14 Pro/15/16 Pro is ~59px, notch on older models ~44px */
+    --capacitor-safe-top: env(safe-area-inset-top, 59px);
+    --capacitor-safe-bottom: env(safe-area-inset-bottom, 34px);
+  }
+
+  /* Capacitor-specific overrides when running in native app */
+  .capacitor {
+    /* Ensure safe area insets are respected */
+    --safe-area-top: env(safe-area-inset-top, 59px);
+    --safe-area-bottom: env(safe-area-inset-bottom, 34px);
+  }
+
+  /* iOS-specific safe area adjustments for Dynamic Island */
+  .capacitor-ios {
+    --capacitor-safe-top: env(safe-area-inset-top, 59px);
+  }
+
+  /* Full-height container that respects safe areas */
+  .capacitor-safe-container {
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-top: var(--safe-area-top);
+    padding-bottom: var(--safe-area-bottom);
+  }
+
+  /* Sheet/dialog that starts below Dynamic Island */
+  .capacitor .sheet-below-notch {
+    top: var(--safe-area-top) !important;
+    height: calc(100dvh - var(--safe-area-top)) !important;
+  }
+
+  /* Full-height sheet with internal safe area padding */
+  .capacitor .sheet-full-safe {
+    height: 100dvh !important;
+    padding-top: var(--safe-area-top);
+  }
+
+  /* Bottom sheet heights for Capacitor */
+  .capacitor .sheet-height-compact {
+    height: 50dvh;
+    max-height: calc(100dvh - var(--safe-area-top) - 20px);
+  }
+
+  .capacitor .sheet-height-medium {
+    height: 70dvh;
+    max-height: calc(100dvh - var(--safe-area-top) - 20px);
+  }
+
+  .capacitor .sheet-height-large {
+    height: 85dvh;
+    max-height: calc(100dvh - var(--safe-area-top) - 20px);
+  }
+
+  .capacitor .sheet-height-full {
+    height: calc(100dvh - var(--safe-area-top));
+    max-height: calc(100dvh - var(--safe-area-top));
+  }
+
+  /* Left-side menu positioned below Dynamic Island */
+  .capacitor .sidebar-below-notch {
+    top: var(--safe-area-top) !important;
+    height: calc(100dvh - var(--safe-area-top)) !important;
+    padding-top: 0 !important;
+  }
+
+  /* Header bar with safe area spacing */
+  .capacitor .header-safe {
+    padding-top: calc(var(--safe-area-top) + 12px);
+  }
+
+  /* Bottom navigation with safe area */
+  .capacitor .nav-bottom-safe {
+    padding-bottom: var(--safe-area-bottom);
+  }
+
+  /* Form content padding to prevent overlap with keyboard */
+  .capacitor .form-content-safe {
+    padding-bottom: calc(40vh + var(--safe-area-bottom));
+  }
+
+  /* Mobile bottom sheet drag handle */
+  .mobile-sheet-drag-handle {
+    width: 36px;
+    height: 5px;
+    background-color: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 9999px;
+    margin: 0 auto;
+  }
+
+  /* Mobile sheet header with safe area */
+  .mobile-sheet-header {
+    padding-top: calc(env(safe-area-inset-top) + 8px);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Combined safe area + fixed padding for headers */
+  .pt-safe-plus {
+    padding-top: calc(env(safe-area-inset-top) + 12px);
+  }
+
+  /* Better touch targets for mobile - minimum 44px for iOS */
+  .touch-manipulation {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  button{
+    cursor: pointer;
+  }
+
+  /* Prevent text size adjustment on iOS */
+  html {
+    -webkit-text-size-adjust: 100%;
+    /* Prevent zoom on input focus - handled by proper font sizing */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Smooth scrolling for iOS */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Mobile-first container max width to prevent content from being too wide */
+  .container {
+    max-width: 100%;
+  }
+
+  /* Prevent horizontal scroll on mobile */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* Mobile sticky headers should account for top bar */
+  @media (max-width: 1024px) {
+    .sticky-mobile {
+      position: sticky;
+      top: 56px; /* Height of mobile top bar */
+      z-index: 30;
+    }
+  }
+
+  /* Mobile-optimized form inputs - prevent zoom on iOS */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="date"],
+  input[type="time"],
+  textarea,
+  select {
+    font-size: 16px; /* Minimum 16px prevents iOS zoom on focus */
+  }
+
+  /* Better spacing for mobile forms */
+  @media (max-width: 640px) {
+    .mobile-form-spacing > * + * {
+      margin-top: 1rem;
+    }
+  }
+
+  /* Mobile-friendly touch areas for buttons */
+  @media (max-width: 768px) {
+    button,
+    a[role="button"],
+    [role="button"] {
+      min-height: 44px; /* iOS minimum touch target */
+      min-width: 44px;
+    }
+  }
+
+  /* Improve mobile scrolling performance */
+  .mobile-scroll-container {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+  }
+
+  /* Mobile-optimized dialogs */
+  @media (max-width: 640px) {
+    [role="dialog"] {
+      max-height: 95vh !important;
+      margin: 0 !important;
+    }
+  }
+
+  /* Better mobile table responsiveness */
+  @media (max-width: 768px) {
+    .mobile-card-view {
+      display: block;
+    }
+    .mobile-table-hide {
+      display: none;
+    }
+  }
+
+  /* Improved touch feedback */
+  .touch-feedback:active {
+    opacity: 0.7;
+    transform: scale(0.98);
+  }
+
+  /* Mobile-friendly tab navigation */
+  @media (max-width: 640px) {
+    [role="tablist"] {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    [role="tablist"]::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  /* Native Mobile Platform Styles */
+
+  /* iOS-style blur and translucency effects */
+  @supports (backdrop-filter: blur(20px)) or (-webkit-backdrop-filter: blur(20px)) {
+    .native-blur {
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+    }
+
+    .native-blur-light {
+      backdrop-filter: blur(10px) saturate(120%);
+      -webkit-backdrop-filter: blur(10px) saturate(120%);
+    }
+  }
+
+  /* Native platform animation curves */
+  .native-ease {
+    transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1); /* Material Design standard */
+  }
+
+  .native-ease-ios {
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1); /* iOS-style easing */
+  }
+
+  .native-spring {
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Spring-like bounce */
+  }
+
+  /* iOS-style card with subtle shadow */
+  @media (max-width: 1024px) {
+    .native-card-ios {
+      box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.04),
+        0 1px 2px rgba(0, 0, 0, 0.06);
+      border-radius: 12px;
+      transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .native-card-ios:active {
+      transform: scale(0.98);
+      box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.03),
+        0 1px 1px rgba(0, 0, 0, 0.04);
+    }
+  }
+
+  /* Android Material Design elevation */
+  @media (max-width: 1024px) {
+    .native-elevation-1 {
+      box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.12),
+        0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+
+    .native-elevation-2 {
+      box-shadow:
+        0 3px 6px rgba(0, 0, 0, 0.15),
+        0 2px 4px rgba(0, 0, 0, 0.12);
+    }
+
+    .native-elevation-3 {
+      box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.15),
+        0 3px 6px rgba(0, 0, 0, 0.10);
+    }
+  }
+
+  /* Native-style active states for interactive elements */
+  @media (max-width: 1024px) {
+    .native-active:active {
+      opacity: 0.6;
+      transition: opacity 0.1s ease;
+    }
+
+    .native-scale:active {
+      transform: scale(0.96);
+      transition: transform 0.1s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+  }
+
+  /* iOS-style list separators */
+  .native-list-separator {
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .native-list-separator {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Native mobile rounded corners - larger on mobile */
+  @media (max-width: 1024px) {
+    .native-rounded {
+      border-radius: 12px;
+    }
+
+    .native-rounded-lg {
+      border-radius: 16px;
+    }
+
+    .native-rounded-xl {
+      border-radius: 20px;
+    }
+  }
+
+  /* Hide scrollbars on mobile while maintaining scroll */
+  @media (max-width: 1024px) {
+    .native-scroll {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .native-scroll::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  /* Native haptic feedback visual cue */
+  @media (max-width: 1024px) {
+    .native-haptic:active {
+      animation: haptic-pulse 0.15s ease;
+    }
+
+    @keyframes haptic-pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(0.97); }
+      100% { transform: scale(1); }
+    }
+  }
+
+  /* iOS-style selection highlight */
+  ::selection {
+    background-color: rgba(119, 70, 27, 0.3); /* Primary color at 30% */
+  }
+
+  ::-moz-selection {
+    background-color: rgba(119, 70, 27, 0.3);
+  }
+
+  /* Native mobile safe area aware components */
+  @media (max-width: 1024px) {
+    .native-bottom-sheet {
+      border-radius: 16px 16px 0 0;
+      padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+    }
+
+    .native-header {
+      padding-top: calc(1rem + env(safe-area-inset-top));
+    }
+  }
+
+  /* Smooth native scroll momentum */
+  @media (max-width: 1024px) {
+    .native-momentum-scroll {
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-y: contain;
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* iOS-style navbar blur effect */
+  @media (max-width: 1024px) {
+    .native-navbar {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .dark .native-navbar {
+      background: rgba(0, 0, 0, 0.7);
+      border-bottom-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+/* Pen visualization animations */
+@layer components {
+  .pen-group:hover .cursor-pointer {
+    filter: brightness(1.05);
+  }
+
+  /* Smooth transitions for resize handles */
+  .cursor-se-resize,
+  .cursor-sw-resize,
+  .cursor-ne-resize,
+  .cursor-nw-resize {
+    transition: all 0.2s ease;
+  }
+
+  .cursor-se-resize:hover,
+  .cursor-sw-resize:hover,
+  .cursor-ne-resize:hover,
+  .cursor-nw-resize:hover {
+    transform: scale(1.2);
+  }
+
+  /* Prose/Markdown styles for agent messages */
+  .prose {
+    color: inherit;
+    max-width: 65ch;
+  }
+
+  .prose :where(p):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .prose :where(strong):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    font-weight: 600;
+    color: inherit;
+  }
+
+  .prose :where(em):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    font-style: italic;
+  }
+
+  .prose :where(h1,h2,h3,h4,h5,h6):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .prose :where(h1):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    font-size: 1.5em;
+  }
+
+  .prose :where(h2):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    font-size: 1.25em;
+  }
+
+  .prose :where(h3):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    font-size: 1.125em;
+  }
+
+  .prose :where(ul,ol):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .prose :where(ul):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    list-style-type: disc;
+  }
+
+  .prose :where(ol):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    list-style-type: decimal;
+  }
+
+  .prose :where(li):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .prose :where(code):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    font-size: 0.875em;
+    font-weight: 600;
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.25rem;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .prose :where(pre):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    padding: 0.75rem 1rem;
+    margin: 0.5rem 0;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .prose :where(pre code):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    background-color: transparent;
+    padding: 0;
+    font-weight: 400;
+  }
+
+  .prose :where(a):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+
+  .prose :where(blockquote):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    border-left: 3px solid var(--color-border);
+    padding-left: 1rem;
+    margin: 0.5rem 0;
+    font-style: italic;
+    color: var(--color-muted-foreground);
+  }
+
+  /* Dark mode adjustments */
+  .dark .prose :where(code):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .dark .prose :where(pre):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Utility: Hide scrollbar but keep scroll functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Prevent horizontal overflow on page level */
+.overflow-x-clip {
+  overflow-x: clip;
+}
+
+/* ========================================
+   MOBILE FORM OPTIMIZATION STYLES
+   ======================================== */
+
+/* Mobile form container with keyboard padding */
+@layer components {
+  .mobile-form-container {
+    @apply flex flex-col min-h-0;
+  }
+
+  @media (max-width: 640px) {
+    .mobile-form-container {
+      /* Extra padding when keyboard may be open */
+      padding-bottom: calc(40vh + env(safe-area-inset-bottom));
+    }
+  }
+
+  /* Mobile form section cards */
+  .mobile-form-section {
+    @apply rounded-xl border bg-card p-4 mb-4;
+  }
+
+  @media (max-width: 640px) {
+    .mobile-form-section {
+      @apply rounded-lg border-border/60 shadow-sm;
+    }
+  }
+
+  /* Mobile form section header */
+  .mobile-form-section-header {
+    @apply flex items-center gap-2 pb-3 mb-3 border-b border-border/50;
+  }
+
+  .mobile-form-section-title {
+    @apply text-sm font-semibold uppercase tracking-wide text-muted-foreground;
+  }
+
+  /* Mobile form field group - single column on mobile */
+  .mobile-form-fields {
+    @apply space-y-4;
+  }
+
+  @media (min-width: 640px) {
+    .mobile-form-fields.grid-2 {
+      @apply grid grid-cols-2 gap-4 space-y-0;
+    }
+  }
+
+  /* Mobile-optimized input wrapper */
+  .mobile-input-wrapper {
+    @apply space-y-2;
+  }
+
+  .mobile-input-wrapper label {
+    @apply text-sm font-medium;
+  }
+
+  /* Mobile stepper navigation */
+  .mobile-stepper-nav {
+    @apply flex items-center justify-between gap-4 pt-4 mt-4 border-t;
+  }
+
+  .mobile-stepper-nav button {
+    @apply flex-1 h-12 font-medium;
+  }
+
+  /* Mobile progress indicator */
+  .mobile-progress-bar {
+    @apply h-1 bg-muted rounded-full overflow-hidden mb-4;
+  }
+
+  .mobile-progress-bar-fill {
+    @apply h-full bg-primary transition-all duration-300;
+  }
+
+  /* Mobile step indicator */
+  .mobile-step-indicator {
+    @apply flex items-center justify-center gap-2 mb-4 px-4;
+  }
+
+  .mobile-step-dot {
+    @apply h-2 w-2 rounded-full bg-muted transition-colors duration-200;
+  }
+
+  .mobile-step-dot.active {
+    @apply bg-primary w-6;
+  }
+
+  .mobile-step-dot.completed {
+    @apply bg-primary;
+  }
+
+  /* Mobile bottom sheet form */
+  @media (max-width: 640px) {
+    .mobile-bottom-sheet-form {
+      @apply fixed inset-x-0 bottom-0 bg-background rounded-t-2xl;
+      max-height: 90vh;
+      max-height: 90dvh;
+    }
+
+    .mobile-bottom-sheet-form::before {
+      content: "";
+      @apply absolute top-2 left-1/2 -translate-x-1/2 w-10 h-1 bg-muted-foreground/30 rounded-full;
+    }
+  }
+
+  /* Mobile searchable picker overlay */
+  .mobile-picker-overlay {
+    @apply fixed inset-0 z-50 bg-background;
+  }
+
+  .mobile-picker-header {
+    @apply sticky top-0 z-10 flex items-center gap-3 p-4 border-b bg-background;
+    padding-top: calc(env(safe-area-inset-top) + 1rem);
+  }
+
+  .mobile-picker-search {
+    @apply flex-1;
+  }
+
+  .mobile-picker-list {
+    @apply flex-1 overflow-y-auto;
+    padding-bottom: calc(env(safe-area-inset-bottom) + 1rem);
+  }
+
+  .mobile-picker-item {
+    @apply flex items-center gap-3 px-4 py-3 border-b border-border/50 active:bg-muted/50 transition-colors;
+    min-height: 52px;
+  }
+
+  .mobile-picker-item.selected {
+    @apply bg-primary/10;
+  }
+
+  /* Mobile form group divider */
+  .mobile-form-divider {
+    @apply flex items-center gap-3 py-2 text-xs font-medium uppercase tracking-wider text-muted-foreground;
+  }
+
+  .mobile-form-divider::before,
+  .mobile-form-divider::after {
+    content: "";
+    @apply flex-1 h-px bg-border;
+  }
+}
+
+/* Mobile keyboard open adjustments */
+@media (max-width: 640px) {
+  .keyboard-open .mobile-form-footer {
+    /* Hide footer when keyboard is open to give more space */
+    display: none;
+  }
+
+  /* Ensure focused inputs are visible above keyboard */
+  input:focus,
+  textarea:focus,
+  select:focus {
+    scroll-margin-bottom: 50vh;
+  }
+}
+
+/* Mobile touch feedback for form elements */
+@media (max-width: 640px) {
+  .mobile-form-section:active {
+    @apply bg-muted/30;
+    transition: background-color 0.1s;
+  }
+
+  /* Better tap targets */
+  .mobile-tap-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Input focus state for better visibility */
+  input:focus,
+  textarea:focus,
+  select:focus {
+    @apply ring-2 ring-primary/50 ring-offset-2;
+  }
+}
+
+/* iOS Keyboard Handling */
+@supports (-webkit-touch-callout: none) {
+  /* iOS-specific styles */
+  input,
+  textarea {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+
+  /* Fix for keyboard resizing on iOS Capacitor */
+  html,
+  body {
+    height: 100%;
+    height: 100vh;
+    height: 100dvh; /* Use dynamic viewport height */
+    overflow: hidden;
+  }
+
+  /* Ensure the main content area can scroll */
+  body > #__next {
+    height: 100%;
+    overflow: auto;
+  }
+}
+
+:root {
+  --webkit-tap-highlight-color: transparent;
+}
