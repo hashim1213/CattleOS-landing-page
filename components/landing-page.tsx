@@ -294,8 +294,8 @@ export function LandingPage() {
         </div>
 
         {/* Content */}
-        <div className="relative z-20 container mx-auto px-4 py-20 md:py-32">
-          <div className="max-w-5xl mx-auto text-center">
+        <div className="relative z-20 container mx-auto px-4 md:px-8 h-full flex items-end pb-20 md:pb-32">
+          <div className="max-w-3xl">
             {/* Main Headline */}
             <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-6 leading-[1.1] tracking-tight">
               Your Spreadsheets Are
@@ -306,12 +306,12 @@ export function LandingPage() {
             </h1>
 
             {/* Subtitle */}
-            <p className="text-xl md:text-2xl text-white/80 mb-10 max-w-3xl mx-auto leading-relaxed font-light">
+            <p className="text-xl md:text-2xl text-white/80 mb-10 max-w-2xl leading-relaxed font-light">
               Professional cattle management with real-time inventory tracking, cost management, and performance analytics.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-4">
               <a href="https://app.cattleos.com/signup">
                 <Button
                   size="lg"
