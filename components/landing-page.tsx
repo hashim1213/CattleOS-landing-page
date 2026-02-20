@@ -280,7 +280,7 @@ export function LandingPage() {
         <div className="absolute inset-0 top-[-120px] z-0">
           <div className="absolute inset-0 bg-black/60 z-10" />
           <Image
-            src="/cow_moo.webp"
+            src="/cow.jpg"
             alt="Cattle farm"
             fill
             className="object-cover scale-105"
