@@ -308,9 +308,7 @@ export function LandingPage() {
               <br />
               So Messy,
               <br />
-              <span className="bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
-                Even The Cattle Are Confused.
-              </span>
+              Even The Cattle Are Confused.
             </h1>
 
             {/* Subtitle */}
@@ -319,7 +317,7 @@ export function LandingPage() {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a href="https://app.cattleos.com/signup">
                 <Button
                   size="lg"
@@ -336,22 +334,6 @@ export function LandingPage() {
               >
                 Learn More
               </Button>
-            </div>
-
-            {/* Trust Indicators */}
-            <div className="flex flex-wrap items-center justify-center gap-6 text-white/60 text-sm">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-green-400" />
-                <span>No Credit Card Required</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-green-400" />
-                <span>Free Trial Available</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-green-400" />
-                <span>Cancel Anytime</span>
-              </div>
             </div>
           </div>
         </div>
