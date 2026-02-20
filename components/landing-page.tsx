@@ -294,7 +294,7 @@ export function LandingPage() {
         </div>
 
         {/* Content */}
-        <div className="relative z-20 container mx-auto px-4 md:px-8 h-full flex items-end pb-20 md:pb-32">
+        <div className="relative z-20 container mx-auto px-4 md:px-8 h-full flex items-end pb-12 md:pb-20">
           <div className="max-w-2xl">
             {/* Main Headline */}
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight tracking-tight">
@@ -312,12 +312,12 @@ export function LandingPage() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3">
-              <a href="https://app.cattleos.com/signup">
+              <a href="https://app.cattleos.com/signup" className="w-full sm:w-auto">
                 <Button
                   size="default"
-                  className="text-base px-6 py-5 bg-[#77461B] hover:bg-[#5c3615] text-white rounded-full shadow-xl hover:shadow-[#77461B]/50 transition-all duration-300 hover:scale-105"
+                  className="w-full sm:w-auto text-lg sm:text-base px-8 py-6 sm:px-6 sm:py-5 bg-[#77461B] hover:bg-[#5c3615] text-white rounded-full shadow-xl hover:shadow-[#77461B]/50 transition-all duration-300 hover:scale-105"
                 >
-                  Get Started <ArrowRight className="ml-2 h-4 w-4" />
+                  Get Started <ArrowRight className="ml-2 h-5 w-5 sm:h-4 sm:w-4" />
                 </Button>
               </a>
               <Button
