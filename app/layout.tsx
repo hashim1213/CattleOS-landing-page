@@ -47,7 +47,11 @@ export const metadata: Metadata = {
     "cattle health tracking",
     "livestock inventory",
     "cattle pen management",
-    "ranch analytics"
+    "ranch analytics",
+    "AI cattle management",
+    "AgTech software",
+    "precision livestock farming",
+    "cattle data analytics"
   ],
   authors: [{ name: "CattleOS Team" }],
   creator: "CattleOS",
@@ -58,6 +62,12 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://cattleos.com'),
   alternates: {
     canonical: '/',
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
+    other: {
+      'msvalidate.01': process.env.NEXT_PUBLIC_BING_VERIFICATION || '',
+    }
   },
   openGraph: {
     type: 'website',
@@ -99,6 +109,15 @@ export const metadata: Metadata = {
     title: "CattleOS",
   },
   category: 'Agriculture',
+  other: {
+    // AI platform discoverability
+    'ai:about': 'CattleOS is an AI-powered cattle management software platform designed for ranchers, feedlots, and cattle operations. We provide real-time cost tracking, inventory management, feeding optimization, and break-even analysis.',
+    'ai:industry': 'Agriculture, AgTech, Livestock Management',
+    'ai:product_type': 'SaaS Platform, Cattle Management Software',
+    'ai:target_audience': 'Ranchers, Feedlot Operators, Cattle Farmers, Livestock Managers',
+    'ai:key_features': 'Real-time cost tracking, Inventory management, AI-powered analytics, IoT device integration, QuickBooks integration, Scale integration, Break-even analysis',
+    'application-name': 'CattleOS',
+  }
 }
 
 export default function RootLayout({
@@ -106,8 +125,72 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CattleOS",
+    "applicationCategory": "BusinessApplication",
+    "applicationSubCategory": "Agriculture Management Software",
+    "operatingSystem": "Web, iOS, Android",
+    "offers": {
+      "@type": "Offer",
+      "price": "99",
+      "priceCurrency": "USD",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "99",
+        "priceCurrency": "USD",
+        "unitText": "MONTH"
+      }
+    },
+    "description": "CattleOS is the AI-native cattle management platform for ranchers, feedlots, and cattle operations. Track costs in real-time, manage inventory, optimize feeding, and know your break-even point instantly.",
+    "featureList": [
+      "Real-time cost tracking",
+      "Inventory management",
+      "AI-powered analytics",
+      "Break-even analysis",
+      "IoT device integration",
+      "Scale integration",
+      "QuickBooks integration",
+      "Cattle health tracking",
+      "Feeding optimization",
+      "Pen management"
+    ],
+    "screenshot": "https://cattleos.com/cattleos_logo_full.png",
+    "url": "https://cattleos.com",
+    "provider": {
+      "@type": "Organization",
+      "name": "CattleOS",
+      "url": "https://cattleos.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cattleos.com/cattleos_logo_full.png"
+      },
+      "sameAs": [
+        "https://twitter.com/cattleos"
+      ]
+    },
+    "targetProduct": {
+      "@type": "Product",
+      "name": "CattleOS Platform",
+      "category": "Agriculture Technology"
+    },
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "Ranchers, Feedlot Operators, Cattle Farmers, Livestock Managers"
+    }
+  }
+
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData)
+          }}
+        />
+      </head>
       <body className="antialiased" suppressHydrationWarning>
         <AuthProvider>
           {children}

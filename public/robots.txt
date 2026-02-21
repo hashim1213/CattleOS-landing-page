@@ -1,0 +1,40 @@
+# robots.txt for CattleOS
+# Allow all search engines and AI platforms to crawl the site
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://cattleos.com/sitemap.xml
+
+# Common AI/LLM User Agents
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Disallow private/admin areas (add as needed)
+Disallow: /api/
+Disallow: /admin/

@@ -423,6 +423,78 @@ export function LandingPage() {
     }
   }
 
+  // FAQ Schema for SEO
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is CattleOS cattle management software?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CattleOS is an AI-powered cattle management software designed specifically for ranchers, feedlot operators, and cattle farmers. Our platform provides real-time cost tracking, inventory management, health records, feeding optimization, and break-even analysis all in one easy-to-use system. Unlike traditional cattle tracking software, CattleOS uses artificial intelligence to help you make smarter decisions about your herd management."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does CattleOS compare to other cattle management software?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CattleOS stands out from traditional livestock management software by being AI-native from the ground up. While other cattle tracking software requires manual data entry and spreadsheets, CattleOS offers voice-activated commands, real-time cost calculations, and intelligent recommendations. Our cattle management system integrates with scales, QuickBooks, and IoT devices, making it the most comprehensive feedlot management system available."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does cattle management software cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CattleOS pricing starts at $99/month for cow-calf operations and $275/month for feedlots. Unlike other livestock management systems that charge per head or have hidden fees, CattleOS offers transparent pricing with unlimited cattle records."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does CattleOS cattle tracking software integrate with my existing equipment?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, CattleOS integrates with major cattle scale manufacturers (Tru-Test, Datamars), QuickBooks for accounting, smart ear tags, and various IoT devices. Our cattle inventory software is designed to work seamlessly with the hardware you already use on your ranch or feedlot."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my cattle data secure and private?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. CattleOS uses bank-level AES-256 encryption to protect your cattle records, financial data, and operational information. We never share, sell, or monetize your data. Your cattle inventory, costs, and farm information stays completely private."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I track cattle health and medications with CattleOS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, CattleOS includes comprehensive cattle health tracking features. Record treatments, vaccinations, and medications with automatic withdrawal period tracking. Our beef cattle software alerts you when animals are clear for sale, helping you maintain compliance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does CattleOS work offline in remote ranch locations?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, CattleOS mobile apps work offline so you can record weights, treatments, and activities even without internet connection. Data automatically syncs when you're back in range."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What kind of reports can I generate with CattleOS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CattleOS provides comprehensive reporting including: cost of gain analysis, break-even pricing, pen performance comparisons, individual animal history, treatment records, inventory summaries, financial reports, and custom analytics."
+        }
+      }
+    ]
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
@@ -578,6 +650,10 @@ export function LandingPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       <div className="min-h-screen bg-background">
@@ -1136,6 +1212,146 @@ export function LandingPage() {
                 We make money from subscriptions, not from your data. Your operation's information is confidential business data,
                 and we treat it that way. <strong className="text-foreground">We will never share, sell, or monetize your cattle data.</strong> Period.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section with Schema Markup */}
+      <section className="py-16 md:py-20 bg-white dark:bg-gray-950">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Frequently Asked Questions About Cattle Management Software
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Everything you need to know about CattleOS cattle management software
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              {/* FAQ Items */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-xl">What is CattleOS cattle management software?</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    CattleOS is an AI-powered cattle management software designed specifically for ranchers, feedlot operators, and cattle farmers. Our platform provides real-time cost tracking, inventory management, health records, feeding optimization, and break-even analysis all in one easy-to-use system. Unlike traditional cattle tracking software, CattleOS uses artificial intelligence to help you make smarter decisions about your herd management.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-xl">How does CattleOS compare to other cattle management software?</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    CattleOS stands out from traditional livestock management software by being AI-native from the ground up. While other cattle tracking software requires manual data entry and spreadsheets, CattleOS offers voice-activated commands, real-time cost calculations, and intelligent recommendations. Our cattle management system integrates with scales, QuickBooks, and IoT devices, making it the most comprehensive feedlot management system available.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-xl">Can I use CattleOS for both cow-calf operations and feedlots?</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Yes! CattleOS is designed to work for all types of cattle operations. Whether you run a cow-calf operation, feedlot, backgrounding operation, or stocker operation, our ranch management software adapts to your needs. We offer different pricing tiers optimized for cow-calf ranchers (starting at $99/month) and feedlot operators (starting at $275/month).
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-xl">Does CattleOS cattle tracking software integrate with my existing equipment?</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Yes, CattleOS integrates with major cattle scale manufacturers (Tru-Test, Datamars), QuickBooks for accounting, smart ear tags, and various IoT devices. Our cattle inventory software is designed to work seamlessly with the hardware you already use on your ranch or feedlot, eliminating duplicate data entry.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-xl">How much does cattle management software cost?</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    CattleOS pricing starts at $99/month for cow-calf operations and $275/month for feedlots. Unlike other livestock management systems that charge per head or have hidden fees, CattleOS offers transparent pricing with unlimited cattle records. Contact us at pavan@cattleos.com for custom pricing for larger operations or enterprise feedlot management needs.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-xl">Is my cattle data secure and private?</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Absolutely. CattleOS uses bank-level AES-256 encryption to protect your cattle records, financial data, and operational information. We never share, sell, or monetize your data. Your cattle inventory, costs, and farm information stays completely private and is never used to train AI models for other operations. Our proprietary AI Data Mesh ensures complete data isolation.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-xl">Can I track cattle health and medications with CattleOS?</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Yes, CattleOS includes comprehensive cattle health tracking features. Record treatments, vaccinations, and medications with automatic withdrawal period tracking. Our beef cattle software alerts you when animals are clear for sale, helping you maintain compliance and avoid costly mistakes. Track individual animal health history and generate treatment reports for veterinary records.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-xl">How do I get started with CattleOS cattle management software?</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Getting started is easy! Sign up for a free account at app.cattleos.com/signup and you can start adding cattle immediately. We offer free virtual demos and on-farm visits to help you get set up. Import your existing cattle inventory from CSV files or add animals individually. Our support team is available to help you migrate from your current ranch management software.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-xl">Does CattleOS work offline in remote ranch locations?</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Yes, CattleOS mobile apps work offline so you can record weights, treatments, and activities even without internet connection. Data automatically syncs when you're back in range. This makes our cattle farming software ideal for remote pastures and areas with poor connectivity.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-xl">What kind of reports can I generate with CattleOS?</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    CattleOS provides comprehensive reporting including: cost of gain analysis, break-even pricing, pen performance comparisons, individual animal history, treatment records, inventory summaries, financial reports, and custom analytics. Export reports for your accountant, lender, or business analysis. Our feedlot analytics give you insights other cattle management software can't provide.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="mt-12 text-center">
+              <p className="text-muted-foreground mb-4">
+                Still have questions about our cattle management software?
+              </p>
+              <a href="mailto:pavan@cattleos.com">
+                <Button size="lg" variant="outline">
+                  Contact Our Team
+                </Button>
+              </a>
             </div>
           </div>
         </div>
