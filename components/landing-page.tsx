@@ -1143,8 +1143,8 @@ export function LandingPage() {
 
       {/* Sign Up & Pricing Section */}
       <section id="loi-form" className="container mx-auto px-4 py-16 md:py-24">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
+        <div className="max-w-4xl mx-auto">
+          <div>
             {/* Sign Up Card */}
             <Card className="border-2 border-primary/20 shadow-2xl">
               <CardContent className="p-8 md:p-12 text-center flex flex-col justify-center h-full">
