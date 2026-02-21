@@ -1201,27 +1201,6 @@ export function LandingPage() {
               </CardContent>
             </Card>
 
-            {/* Pricing Card */}
-            <Card id="pricing" className="border-2 border-primary/20 shadow-2xl">
-              <CardContent className="p-8 md:p-12 text-center flex flex-col justify-center h-full">
-                <div className="mb-6">
-                  <Mail className="h-16 w-16 text-primary mx-auto mb-4" />
-                  <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">
-                    Contact Us for Pricing
-                  </h3>
-                  <p className="text-lg text-muted-foreground mb-6">
-                    Get custom pricing tailored to your operation's needs
-                  </p>
-                </div>
-                <a
-                  href="mailto:pavan@cattleos.com"
-                  className="inline-flex items-center gap-2 text-lg font-semibold text-primary hover:text-primary/80 transition-colors"
-                >
-                  <Mail className="h-5 w-5" />
-                  pavan@cattleos.com
-                </a>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </section>
