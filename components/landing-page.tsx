@@ -847,22 +847,6 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* How It Works - Interactive Animated Demo */}
-      <section className="py-16 md:py-20 bg-white dark:bg-gray-950">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
-              See How Easy It Is
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Add cattle and manage your entire operation in seconds, not hours.
-            </p>
-          </div>
-
-          <InteractiveWorkflowDemo />
-        </div>
-      </section>
-
       {/* AI-First Section */}
       <section className="py-16 md:py-20 bg-gray-50 dark:bg-gray-900 overflow-hidden">
         <div className="container mx-auto px-4">
