@@ -1152,10 +1152,34 @@ export function LandingPage() {
                   <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
                     Ready to Transform Your Cattle Operation?
                   </h2>
-                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                    Join CattleOS today and start managing your herd with confidence.
-                    Get real-time insights, track costs, and make data-driven decisions.
+                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6">
+                    Book a demo or contact us for pricing. We offer farm visits and virtual demos tailored to your operation.
                   </p>
+
+                  <div className="space-y-4 mb-6">
+                    <a
+                      href="mailto:pavan@cattleos.com"
+                      className="inline-flex items-center gap-2 text-lg font-semibold text-primary hover:text-primary/80 transition-colors"
+                    >
+                      <Mail className="h-5 w-5" />
+                      pavan@cattleos.com
+                    </a>
+
+                    <div className="flex flex-wrap justify-center gap-3 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-2">
+                        <MapPin className="h-4 w-4 text-primary" />
+                        <span>On-Farm Visits</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Calendar className="h-4 w-4 text-primary" />
+                        <span>Virtual Demos</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <DollarSign className="h-4 w-4 text-primary" />
+                        <span>Custom Pricing</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
